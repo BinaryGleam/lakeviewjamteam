@@ -20,10 +20,6 @@ public class DoorButton : MonoBehaviour, IShootable
 
     void Start()
     {
-        if(GetComponent<IShootable>() != null)
-		{
-            Debug.Log("Log");
-		}
         statusLight = GetComponentInChildren<Light>();
         if (statusLight == null)
         {
