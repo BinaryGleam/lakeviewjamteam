@@ -1059,6 +1059,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunLight: {fileID: 6063140351473087730}
   fireVFXDecayDelay: 0.05
+  shootLinearCounterForce: {x: 0, y: 0, z: -0.4}
+  shootAngularCounterForce: {x: -0.008, y: 0, z: 0}
 --- !u!1 &8370397205264566159
 GameObject:
   m_ObjectHideFlags: 0

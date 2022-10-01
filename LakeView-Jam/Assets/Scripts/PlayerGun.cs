@@ -17,6 +17,9 @@ public class PlayerGun : MonoBehaviour
     private float fireVFXDecayDelay = 0.05f;
     private float chrono = 0f;
 
+    [SerializeField]
+    private Vector3 shootLinearCounterForce = Vector3.zero,
+                    shootAngularCounterForce = Vector3.zero;
     void Awake()
     {
         lineRendererRef = GetComponent<LineRenderer>();
@@ -46,19 +49,17 @@ public class PlayerGun : MonoBehaviour
 		}
         lineRendererRef.enabled = VFXEnableCondition();
         gunLight.enabled = VFXEnableCondition();
-    }
-
-	private void FixedUpdate()
-	{
         lineRendererRef.SetPosition(0, gunLight.transform.position);
         if (bShooting)
-		{
+        {
             OnShoot();
-		}
-	}
+        }
+    }
 
     private void OnShoot()
 	{
+        rigidbodyRef.AddRelativeForce(shootLinearCounterForce, ForceMode.Impulse);
+        rigidbodyRef.AddRelativeTorque(shootAngularCounterForce, ForceMode.Impulse);
         RaycastHit hitInfos;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfos, Mathf.Infinity))
         {
