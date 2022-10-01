@@ -68,6 +68,7 @@ public class PlayerGun : MonoBehaviour
             IShootable shotGameobject = hitInfos.collider.GetComponent<IShootable>();
             if (shotGameobject != null)
             {
+                Debug.Log("hello");
                 shotGameobject.OnGettingShot();
             }
         }
