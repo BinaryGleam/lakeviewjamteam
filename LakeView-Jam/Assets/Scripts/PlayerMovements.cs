@@ -2,10 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovements : MonoBehaviour
 {
     public Action OnTimerEnd = null;
+
+    [SerializeField]
+    private TextMeshProUGUI TimerUI = null;
 
     [SerializeField]
     [Range(0f,100f)]
@@ -33,6 +37,11 @@ public class PlayerMovements : MonoBehaviour
 
 	private void Awake()
 	{
+        if(TimerUI == null)
+		{
+            Debug.LogError(this.name + " timer ui variable wasn't set up in editor. Script gonna auto destroy");
+            Destroy(this);
+        }
         rigidbodyRef = GetComponent<Rigidbody>();
         if(rigidbodyRef == null)
 		{
@@ -67,6 +76,7 @@ public class PlayerMovements : MonoBehaviour
 
     private void CountDown()
 	{
+        TimerUI.text = MathF.Ceiling(chrono).ToString();
         chrono -= Time.deltaTime;
         if(chrono <= 0f)
 		{
