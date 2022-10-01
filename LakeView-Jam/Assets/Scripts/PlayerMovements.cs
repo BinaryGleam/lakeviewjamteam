@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovements : MonoBehaviour
 {
+    public Action OnTimerEnd = null;
+
     [SerializeField]
     [Range(0f,100f)]
     private float maxAngularVelocity = 1f;
@@ -16,11 +19,17 @@ public class PlayerMovements : MonoBehaviour
     [Tooltip("X is horzontal speed, Y vertical, and Z roll speed")]
     private Vector3 moveSpeed = new Vector3(1f, 1f, 1f);
 
+    [SerializeField]
+    [Range(0f,100f)]
+    private float forwardImpulse = 5f;
+
     private Rigidbody rigidbodyRef = null;
 
     private float horizontal = 0f, 
                     vertical = 0f, 
-                    roll = 0f;
+                    roll = 0f,
+                    chronoMax = 10f,
+                    chrono;
 
 	private void Awake()
 	{
@@ -30,17 +39,16 @@ public class PlayerMovements : MonoBehaviour
             Debug.LogError(this.name + " script isn't linked to something with a rigidbody. Script gonna auto destroy");
             Destroy(this);
 		}
-	}
-
-	void Start()
-    {
         rigidbodyRef.maxAngularVelocity = maxAngularVelocity;
         rigidbodyRef.maxLinearVelocity = maxLinearVelocity;
-    }
 
+        chrono = chronoMax;
+        OnTimerEnd += OnTimerReachZero;
+	}
     void Update()
     {
         CatchInputs();
+        CountDown();
     }
 
 	private void FixedUpdate()
@@ -56,4 +64,20 @@ public class PlayerMovements : MonoBehaviour
         vertical    = Input.GetAxis("Vertical");
         roll        = Input.GetAxis("Roll");
     }
+
+    private void CountDown()
+	{
+        chrono -= Time.deltaTime;
+        if(chrono <= 0f)
+		{
+            OnTimerEnd.Invoke();
+		}
+	}
+
+    private void OnTimerReachZero()
+	{
+        chrono = chronoMax;
+        rigidbodyRef.velocity = Vector3.zero;
+        rigidbodyRef.AddRelativeForce(0f, 0f, forwardImpulse, ForceMode.Impulse);
+	}
 }
