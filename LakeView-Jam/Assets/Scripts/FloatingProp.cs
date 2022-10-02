@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloatingProp : MonoBehaviour
+public class FloatingProp : MonoBehaviour, IShootable
 {
     private Rigidbody rigidbodyRef = null;
 
@@ -11,6 +11,9 @@ public class FloatingProp : MonoBehaviour
                     linearInitForceMax = Vector3.zero,
                     angularInitForceMin = Vector3.zero,
                     angularInitForceMax = Vector3.zero;
+
+    [SerializeField]
+    private float bulletForceResponse = 1f;
 
     void Awake()
     {
@@ -28,4 +31,10 @@ public class FloatingProp : MonoBehaviour
                                                     Random.Range(angularInitForceMin.y, angularInitForceMax.y),
                                                     Random.Range(angularInitForceMin.z, angularInitForceMax.z));
     }
+
+    public bool OnGettingShot(RaycastHit hit)
+	{
+        rigidbodyRef.AddForceAtPosition(-hit.normal * bulletForceResponse, hit.point, ForceMode.Impulse);
+        return true;
+	}
 }

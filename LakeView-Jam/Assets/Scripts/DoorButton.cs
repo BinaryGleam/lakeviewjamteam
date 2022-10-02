@@ -8,7 +8,7 @@ public class DoorButton : MonoBehaviour, IShootable
     private bool bBroke = false;
     private Light statusLight = null;
 
-    public bool OnGettingShot()
+    public bool OnGettingShot(RaycastHit hit)
 	{
         if(!bBroke)
 		{
