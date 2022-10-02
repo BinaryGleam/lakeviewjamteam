@@ -4261,6 +4261,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 750039201, guid: 8b995b237f1d17849abe2cf04da43b7f, type: 3}
+      propertyPath: m_showDebugUI
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 636468414120328602, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -4589,17 +4593,17 @@ PrefabInstance:
     - target: {fileID: 2654774056846854529, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -14.68
       objectReference: {fileID: 0}
     - target: {fileID: 2654774056846854529, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.96
       objectReference: {fileID: 0}
     - target: {fileID: 2654774056846854529, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: 2654774056846854529, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
@@ -4670,6 +4674,21 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1975448256504848217, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 4288777661100838906}
+    - target: {fileID: 1975448256504848217, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975448256504848217, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: bulletForceResponse
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6017172048283009847, guid: 83279aba674136541acfb80102cf4149,
         type: 3}
       propertyPath: m_RootOrder
@@ -4678,7 +4697,7 @@ PrefabInstance:
     - target: {fileID: 6017172048283009847, guid: 83279aba674136541acfb80102cf4149,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.969
+      value: -14.52
       objectReference: {fileID: 0}
     - target: {fileID: 6017172048283009847, guid: 83279aba674136541acfb80102cf4149,
         type: 3}
@@ -4730,9 +4749,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut
       objectReference: {fileID: 0}
+    - target: {fileID: 8366937921414074660, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8366937921414074660, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8366937921414074660, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
+--- !u!4 &4288777661100838906 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2024629951904608994, guid: 83279aba674136541acfb80102cf4149,
+    type: 3}
+  m_PrefabInstance: {fileID: 2854194444199542040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8482223691889442505
 PrefabInstance:
   m_ObjectHideFlags: 0

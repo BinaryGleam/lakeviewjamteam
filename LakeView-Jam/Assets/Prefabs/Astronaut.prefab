@@ -235,8 +235,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6017172048283009847}
+  - component: {fileID: 851056879905718384}
+  - component: {fileID: 5272592633701848094}
+  - component: {fileID: 8366937921414074660}
   - component: {fileID: 9175723660790064280}
   - component: {fileID: 9175723660790064279}
+  - component: {fileID: 1975448256504848217}
   - component: {fileID: 9175723660790064278}
   m_Layer: 0
   m_Name: Astronaut
@@ -262,6 +266,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &851056879905718384
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398096320143415693}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.19
+  m_Height: 0.75
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!135 &5272592633701848094
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398096320143415693}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8366937921414074660
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398096320143415693}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &9175723660790064280
 Animator:
   serializedVersion: 4
@@ -297,6 +344,21 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &1975448256504848217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398096320143415693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9cadc6dceda7b94eaf3c912c1f334c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpSpeed: 10
+  moveSpeed: 5
+  bulletForceResponse: 50
 --- !u!114 &9175723660790064278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +479,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5545478931798701090}
   - component: {fileID: 3382460173205765728}
-  - component: {fileID: 2292686981653030510}
   m_Layer: 0
   m_Name: AstronautMesh
   m_TagString: Untagged
@@ -505,20 +566,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.00047724065, z: 0.0007305324}
     m_Extent: {x: 0.008819826, y: 0.007574397, z: 0.0020791602}
   m_DirtyAABB: 0
---- !u!64 &2292686981653030510
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8620204298743258346}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &8662856263414883944
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,8 +12,7 @@ public class FloatingProp : MonoBehaviour, IShootable
                     angularInitForceMin = Vector3.zero,
                     angularInitForceMax = Vector3.zero;
 
-    [SerializeField]
-    private float bulletForceResponse = 1f;
+    public float bulletForceResponse = 1f;
 
     void Awake()
     {
