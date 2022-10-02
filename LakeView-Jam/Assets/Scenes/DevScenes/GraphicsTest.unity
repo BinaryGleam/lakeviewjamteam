@@ -4768,12 +4768,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452796220}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &1488674646 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 987567136, guid: 8b995b237f1d17849abe2cf04da43b7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1734891877}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1548949059
 GameObject:
   m_ObjectHideFlags: 0
@@ -5628,16 +5622,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 797282480955614201, guid: 8b995b237f1d17849abe2cf04da43b7f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.369
-      objectReference: {fileID: 0}
-    - target: {fileID: 797282480955614201, guid: 8b995b237f1d17849abe2cf04da43b7f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.8
-      objectReference: {fileID: 0}
     - target: {fileID: 2654774056846854529, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_RootOrder
@@ -5697,21 +5681,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2789064953511502685, guid: 8b995b237f1d17849abe2cf04da43b7f,
-        type: 3}
-      propertyPath: m_animator
-      value: 
-      objectReference: {fileID: 1488674646}
-    - target: {fileID: 2789064953511502685, guid: 8b995b237f1d17849abe2cf04da43b7f,
-        type: 3}
-      propertyPath: m_animatorParam
-      value: Shoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 2789064953511502685, guid: 8b995b237f1d17849abe2cf04da43b7f,
-        type: 3}
-      propertyPath: fireVFXDecayDelay
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

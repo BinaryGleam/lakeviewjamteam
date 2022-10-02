@@ -18,6 +18,9 @@ public class PlayerGun : MonoBehaviour
     private float chrono = 0f;
 
     [SerializeField]
+    private Transform m_playerArm;
+
+    [SerializeField]
     [NaughtyAttributes.Required]
     private Transform GunMuzzle;
 
@@ -64,6 +67,26 @@ public class PlayerGun : MonoBehaviour
         {
             OnShoot();
         }
+
+        mouseRayWorld = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        m_playerArm.forward = Vector3.MoveTowards(m_playerArm.forward, mouseRayWorld.direction, Time.deltaTime * m_aimSpeed);
+            // mouseRayWorld.direction;
+        // m_playerArm.LookAt();
+
+        var beef = m_playerArm.localRotation.eulerAngles;
+        beef.z = 0;
+        m_playerArm.localRotation = Quaternion.Euler(beef);
+    }
+    [SerializeField]
+    float m_aimSpeed = 10f;
+    Ray mouseRayWorld;
+    [SerializeField, Min(1)]
+    private float ProjectionDistance = 1;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(mouseRayWorld.origin + mouseRayWorld.direction * ProjectionDistance, .25f);
     }
 
     private void OnShoot()
@@ -72,7 +95,9 @@ public class PlayerGun : MonoBehaviour
         rigidbodyRef.AddRelativeForce(shootLinearCounterForce, ForceMode.Impulse);
         rigidbodyRef.AddRelativeTorque(shootAngularCounterForce, ForceMode.Impulse);
         RaycastHit hitInfos;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfos, Mathf.Infinity))
+
+        // if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfos, Mathf.Infinity))
+        if (Physics.Raycast(mouseRayWorld, out hitInfos, Mathf.Infinity))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hitInfos.distance, Color.yellow);
             lineRendererRef.SetPosition(1, hitInfos.point);
