@@ -1,6 +1,6 @@
-using System;
+using UnityEngine;
 
 public interface IShootable 
 {
-	bool OnGettingShot();
+	bool OnGettingShot(RaycastHit hit);
 }
