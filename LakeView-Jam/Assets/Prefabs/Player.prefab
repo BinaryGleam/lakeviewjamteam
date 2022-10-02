@@ -654,13 +654,13 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 200.95
+  m_Intensity: 100
   m_Range: 100
   m_SpotAngle: 45
   m_InnerSpotAngle: 35
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -685,10 +685,10 @@ Light:
       e32: 0
       e33: 1
     m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
+  m_Cookie: {fileID: 2800000, guid: bba832964c4db7f4493061726b9652b4, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -715,7 +715,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.53
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &507451466358477340
 Rigidbody:
@@ -731,7 +731,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 2
 --- !u!114 &750039201
 MonoBehaviour:
@@ -747,7 +747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerUI: {fileID: 698246373}
   m_minAngularDrag: 0.05
-  m_maxAngularVelocity: 2
+  m_maxAngularVelocity: 3
   m_maxLinearVelocity: 10
   m_rotationSpeed: {x: 2, y: 2, z: 1}
   forwardImpulse: 25
@@ -921,7 +921,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_showDebugUI: 1
+  m_showDebugUI: 0
 --- !u!120 &7463243594422972641
 LineRenderer:
   serializedVersion: 2
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 1
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
+  m_AdditionalLightsShadowResolutionTier: 0
   m_LightLayerMask: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
