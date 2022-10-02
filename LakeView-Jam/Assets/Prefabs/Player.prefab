@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2148517225919872453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6695, y: -0.3705, z: 1.8999}
+  m_LocalPosition: {x: 0.6695, y: -0.369, z: 1.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -313,7 +313,7 @@ Transform:
   - {fileID: 1287694322}
   - {fileID: 1591366709676198778}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2654774056846854590
 MeshFilter:
@@ -782,6 +782,8 @@ MonoBehaviour:
   gunLight: {fileID: 6063140351473087730}
   fireVFXDecayDelay: 0.1
   GunMuzzle: {fileID: 797282480955614201}
+  m_animator: {fileID: 987567136}
+  m_animatorParam: Shoot
   shootLinearCounterForce: {x: 0, y: 0, z: -0.4}
   shootAngularCounterForce: {x: -0.008, y: 0, z: 0}
 --- !u!114 &5556038599837337852

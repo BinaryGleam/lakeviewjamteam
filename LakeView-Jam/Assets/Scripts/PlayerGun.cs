@@ -21,6 +21,11 @@ public class PlayerGun : MonoBehaviour
     [NaughtyAttributes.Required]
     private Transform GunMuzzle;
 
+    [SerializeField, NaughtyAttributes.Required]
+    private Animator m_animator;
+    [SerializeField, NaughtyAttributes.AnimatorParam("m_animator")]
+    private string m_animatorParam;
+
     [SerializeField]
     private Vector3 shootLinearCounterForce = Vector3.zero,
                     shootAngularCounterForce = Vector3.zero;
@@ -63,6 +68,7 @@ public class PlayerGun : MonoBehaviour
 
     private void OnShoot()
 	{
+        m_animator.SetTrigger(m_animatorParam);
         rigidbodyRef.AddRelativeForce(shootLinearCounterForce, ForceMode.Impulse);
         rigidbodyRef.AddRelativeTorque(shootAngularCounterForce, ForceMode.Impulse);
         RaycastHit hitInfos;
