@@ -5302,18 +5302,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 750039201, guid: 8b995b237f1d17849abe2cf04da43b7f, type: 3}
-      propertyPath: forwardImpulse
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 750039201, guid: 8b995b237f1d17849abe2cf04da43b7f, type: 3}
-      propertyPath: m_terrainLayer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 750039201, guid: 8b995b237f1d17849abe2cf04da43b7f, type: 3}
-      propertyPath: m_pushAwaySpeed
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 636468414120328602, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5634,6 +5622,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 797282480955614201, guid: 8b995b237f1d17849abe2cf04da43b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.369
+      objectReference: {fileID: 0}
+    - target: {fileID: 797282480955614201, guid: 8b995b237f1d17849abe2cf04da43b7f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2654774056846854529, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_RootOrder
@@ -5642,17 +5640,17 @@ PrefabInstance:
     - target: {fileID: 2654774056846854529, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.85
+      value: -7.62
       objectReference: {fileID: 0}
     - target: {fileID: 2654774056846854529, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.121
+      value: 6.44
       objectReference: {fileID: 0}
     - target: {fileID: 2654774056846854529, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.39
+      value: -20.53
       objectReference: {fileID: 0}
     - target: {fileID: 2654774056846854529, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
@@ -5689,15 +5687,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2654774056846854588, guid: 8b995b237f1d17849abe2cf04da43b7f,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.75
-      objectReference: {fileID: 0}
     - target: {fileID: 2654774056846854589, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2789064953511502685, guid: 8b995b237f1d17849abe2cf04da43b7f,
+        type: 3}
+      propertyPath: fireVFXDecayDelay
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
