@@ -281,18 +281,18 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a275cf98041b04748af85a8aba5031e4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 0.9274975
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 5
-  MinDistance: 1
+  DopplerLevel: 0
+  MinDistance: 5
   MaxDistance: 75
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -340,7 +340,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.027777778
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_audioClipArray:
   - {fileID: 8300000, guid: dfb1dfb9e26d04205bca0b1cb15bba11, type: 3}
   - {fileID: 8300000, guid: f998d4e8baa644aaa848cde530902738, type: 3}
-  m_pitchRange: {x: 0.7, y: 0.8}
+  m_pitchRange: {x: 1.5, y: 1.6}
   loopRandomSounds: 0
   m_TimerBetweenPlaySE: {x: 0, y: 0}
   waitingForNewPlay: 0
@@ -612,18 +612,18 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a275cf98041b04748af85a8aba5031e4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 0.9274975
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 5
-  MinDistance: 1
+  DopplerLevel: 0
+  MinDistance: 5
   MaxDistance: 75
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -671,7 +671,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.027777778
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -711,7 +711,7 @@ MonoBehaviour:
   m_audioClipArray:
   - {fileID: 8300000, guid: dfb1dfb9e26d04205bca0b1cb15bba11, type: 3}
   - {fileID: 8300000, guid: f998d4e8baa644aaa848cde530902738, type: 3}
-  m_pitchRange: {x: 0.7, y: 0.8}
+  m_pitchRange: {x: 1.5, y: 1.6}
   loopRandomSounds: 0
   m_TimerBetweenPlaySE: {x: 0, y: 0}
   waitingForNewPlay: 0
@@ -998,7 +998,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1202,7 +1202,7 @@ MonoBehaviour:
   m_maxAngularVelocity: 3
   m_maxLinearVelocity: 10
   m_rotationSpeed: {x: 2, y: 2, z: 2}
-  forwardImpulse: 100
+  forwardImpulse: 125
   m_pushAwayDistance: 1
   m_pushAwaySpeed: 0.5
   m_warningDisplayTime: 0.5
@@ -1363,6 +1363,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1980,18 +1992,18 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a275cf98041b04748af85a8aba5031e4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 0.9274975
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 5
-  MinDistance: 1
+  DopplerLevel: 0
+  MinDistance: 5
   MaxDistance: 75
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -2039,7 +2051,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.027777778
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2079,7 +2091,7 @@ MonoBehaviour:
   m_audioClipArray:
   - {fileID: 8300000, guid: dfb1dfb9e26d04205bca0b1cb15bba11, type: 3}
   - {fileID: 8300000, guid: f998d4e8baa644aaa848cde530902738, type: 3}
-  m_pitchRange: {x: 0.7, y: 0.8}
+  m_pitchRange: {x: 1.5, y: 1.6}
   loopRandomSounds: 0
   m_TimerBetweenPlaySE: {x: 0, y: 0}
   waitingForNewPlay: 0
@@ -2934,18 +2946,18 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a275cf98041b04748af85a8aba5031e4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 0.9274975
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 5
-  MinDistance: 1
+  DopplerLevel: 0
+  MinDistance: 5
   MaxDistance: 75
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -2993,7 +3005,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.027777778
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3033,7 +3045,7 @@ MonoBehaviour:
   m_audioClipArray:
   - {fileID: 8300000, guid: dfb1dfb9e26d04205bca0b1cb15bba11, type: 3}
   - {fileID: 8300000, guid: f998d4e8baa644aaa848cde530902738, type: 3}
-  m_pitchRange: {x: 0.7, y: 0.8}
+  m_pitchRange: {x: 1.5, y: 1.6}
   loopRandomSounds: 0
   m_TimerBetweenPlaySE: {x: 0, y: 0}
   waitingForNewPlay: 0
