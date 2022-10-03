@@ -303,7 +303,7 @@ Transform:
   - {fileID: 2024629951904608994}
   - {fileID: 1176497384}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &851056879905718384
 CapsuleCollider:
@@ -561,7 +561,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 913a1b0f5527ab34fb1d8349697f5943, type: 2}
+  - {fileID: 2100000, guid: 33d41afa4aa971a4fb182010c1544b4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
