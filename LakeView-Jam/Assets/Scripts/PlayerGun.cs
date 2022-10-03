@@ -25,6 +25,9 @@ public class PlayerGun : MonoBehaviour
     [NaughtyAttributes.Required]
     private Transform GunMuzzle;
 
+    [SerializeField]
+    private Transform gunCursor = null;
+
     [SerializeField, NaughtyAttributes.Required]
     private Animator m_animator;
     [SerializeField, NaughtyAttributes.AnimatorParam("m_animator")]
@@ -50,6 +53,8 @@ public class PlayerGun : MonoBehaviour
             Debug.LogError(this.name + " script isn't linked to something with a rigidbody. Script gonna auto destroy");
             Destroy(this);
         }
+
+        Cursor.visible = false;
     }
 
     void Update()
@@ -73,6 +78,10 @@ public class PlayerGun : MonoBehaviour
         }
 
         mouseRayWorld = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if(gunCursor)
+		{
+            gunCursor.position = Input.mousePosition;
+		}
 
         m_playerArm.forward = Vector3.MoveTowards(m_playerArm.forward, mouseRayWorld.direction, Time.deltaTime * m_aimSpeed);
             // mouseRayWorld.direction;
