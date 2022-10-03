@@ -1670,8 +1670,8 @@ MonoBehaviour:
   gunCursor: {fileID: 0}
   m_animator: {fileID: 987567136}
   m_animatorParam: Shoot
-  shootLinearCounterForce: {x: 0, y: 0, z: -0.4}
-  shootAngularCounterForce: {x: -0.008, y: 0, z: 0}
+  shootLinearCounterForce: {x: 0, y: 0, z: -4}
+  shootAngularCounterForce: {x: -0.08, y: 0, z: 0}
   OnShot:
     m_PersistentCalls:
       m_Calls:
