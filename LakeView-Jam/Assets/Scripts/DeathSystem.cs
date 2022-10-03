@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DeathSystem : MonoBehaviour, IKillable
 {
@@ -9,6 +10,8 @@ public class DeathSystem : MonoBehaviour, IKillable
     [SerializeField]
     private GameObject[] objectsDeactivatedOnDeath = null,
                             activatedOnDeath = null;
+
+    public UnityEvent OnDeathEvent;
 
     public bool OnDeath()
 	{
@@ -24,6 +27,8 @@ public class DeathSystem : MonoBehaviour, IKillable
 		{
             behaviour.enabled = false;
 		}
+
+        OnDeathEvent?.Invoke();
         return true;
 	}
 }

@@ -18,6 +18,53 @@ public class PlaySoundEffect : MonoBehaviour
     private void Start()
     {
         m_AudioSource = GetComponent<AudioSource>();
+        
+        if (loopRandomSounds)
+        {
+            waitingForNewPlay = true;
+        }
+    }
+
+    [SerializeField]
+    public bool loopRandomSounds = false;
+
+    [SerializeField, MinMaxSlider(0, 10)]
+    private Vector2 m_TimerBetweenPlaySE;
+
+    public void StopSound()
+    {
+#if UNITY_EDITOR
+        if (m_AudioSource == null)
+        {
+            m_AudioSource = GetComponent<AudioSource>();
+        }
+#endif
+
+        m_AudioSource.Stop();
+    }
+
+    public bool waitingForNewPlay = false;
+    private void FixedUpdate()
+    {
+        if(!waitingForNewPlay)
+        {
+            return;
+        }
+
+        if (loopRandomSounds && !m_AudioSource.isPlaying)
+        {
+            waitingForNewPlay = false;
+            StartCoroutine(Coroutine_LoopSE());
+        }
+    }
+
+    IEnumerator Coroutine_LoopSE()
+    {
+        yield return new WaitForSeconds(Random.Range(m_TimerBetweenPlaySE.x, m_TimerBetweenPlaySE.y));
+        if (loopRandomSounds)
+        {
+            Play();
+        }
     }
 
     [Button("Play Random SE")]
@@ -45,6 +92,11 @@ public class PlaySoundEffect : MonoBehaviour
         m_AudioSource.pitch = Random.Range(m_pitchRange.x, m_pitchRange.y);
 
         m_AudioSource.Play();
+
+        if (loopRandomSounds)
+        {
+            waitingForNewPlay = true;
+        }
     }
 
     public void PlayAtLocation(Vector3 location)

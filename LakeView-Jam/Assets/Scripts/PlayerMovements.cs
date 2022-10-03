@@ -42,7 +42,7 @@ public class PlayerMovements : MonoBehaviour
     [Tooltip("X is horzontal speed, Y vertical, and Z roll speed")]
     private Vector3 m_rotationSpeed = new Vector3(1f, 1f, 1f);
     [SerializeField]
-    [Range(0f,100f)]
+    [Range(0f,200f)]
     private float forwardImpulse = 10f;
 
     [SerializeField]
@@ -111,8 +111,10 @@ public class PlayerMovements : MonoBehaviour
     public FloatEvent OnRollBoosterChanged;
     [NaughtyAttributes.Foldout("Quaternion Booster")]
     public FloatEvent OnStabilizerBoosterChanged;
+    [NaughtyAttributes.Foldout("Quaternion Booster"), UnityEngine.Serialization.FormerlySerializedAs("OnSuitFeatureForcedActivation")]
+    public BoolEvent OnSuitWarningDisplay;
     [NaughtyAttributes.Foldout("Quaternion Booster")]
-    public BoolEvent OnSuitFeatureForcedActivation;
+    public UnityEvent OnSuitBoostActivation;
 
     [NaughtyAttributes.Foldout("Booster Sound ")]
     public UnityEvent OnUpBoosterTrigger;
@@ -348,7 +350,7 @@ public class PlayerMovements : MonoBehaviour
         return false;
     }
 
-    
+    private bool m_suitFeatureActivationFlip = false;
     private void CountDown()
 	{
         if (TimerUI)
@@ -357,9 +359,10 @@ public class PlayerMovements : MonoBehaviour
         }
 
         chrono -= Time.deltaTime;
-        if(chrono <= m_warningDisplayTime)
+        if(chrono <= m_warningDisplayTime && !m_suitFeatureActivationFlip)
         {
-            OnSuitFeatureForcedActivation?.Invoke(true);
+            m_suitFeatureActivationFlip = true;
+            OnSuitWarningDisplay?.Invoke(true);
         }
 
         if(chrono <= 0f)
@@ -368,8 +371,10 @@ public class PlayerMovements : MonoBehaviour
             if (!m_disableAutoDash)
 #endif
                 OnTimerEnd.Invoke();
-
-            OnSuitFeatureForcedActivation?.Invoke(false);
+            
+            m_suitFeatureActivationFlip = false;
+            OnSuitWarningDisplay?.Invoke(false);
+            OnSuitBoostActivation?.Invoke();
         }
     }
 
