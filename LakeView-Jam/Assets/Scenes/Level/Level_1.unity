@@ -887,6 +887,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8278892146267919217, guid: 451b319a3399b64468d87bcb8d275bd6,
         type: 3}
+      propertyPath: m_objectToSpawn.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 1464026131833633173, guid: fe6e50c268fb19743a242addaf8f152d,
+        type: 3}
+    - target: {fileID: 8278892146267919217, guid: 451b319a3399b64468d87bcb8d275bd6,
+        type: 3}
       propertyPath: m_objectToSpawn.Array.data[0].InSceneParent
       value: 
       objectReference: {fileID: 2082240230}
