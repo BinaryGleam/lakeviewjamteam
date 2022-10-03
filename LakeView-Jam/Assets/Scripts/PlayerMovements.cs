@@ -10,6 +10,9 @@ public class FloatEvent : UnityEvent<float> { }
 [Serializable]
 public class BoolEvent : UnityEvent<bool> { }
 
+[Serializable]
+public class VectorEvent : UnityEvent<Vector3> { }
+
 public class PlayerMovements : MonoBehaviour
 {
     public Action OnTimerEnd = null;
@@ -37,7 +40,12 @@ public class PlayerMovements : MonoBehaviour
     private Vector3 m_rotationSpeed = new Vector3(1f, 1f, 1f);
     [SerializeField]
     [Range(0f,100f)]
-    private float forwardImpulse = 5f;
+    private float forwardImpulse = 10f;
+
+    [SerializeField]
+    private float m_pushAwayDistance = 1f;
+    [SerializeField]
+    private float m_pushAwaySpeed = .5f;
 
     private Rigidbody rigidbodyRef = null;
     private float m_horizontalInputValue = 0f,
@@ -91,6 +99,18 @@ public class PlayerMovements : MonoBehaviour
     private float m_autoStabilizerForce = 3f;
     private bool m_isAutoStabilizerActive = false;
 
+
+    public FloatEvent OnPitchBoosterChanged;
+    public FloatEvent OnYawBoosterChanged;
+    public FloatEvent OnRollBoosterChanged;
+    public FloatEvent OnStabilizerBoosterChanged;
+    public BoolEvent OnSuitFeatureForcedActivation;
+    public VectorEvent OnTerrainCollision;
+
+    [SerializeField]
+    [NaughtyAttributes.Layer]
+    private int m_terrainLayer;
+
     //-------------- DEBUG
     [Header("Debug")]
     [NaughtyAttributes.HorizontalLine(1)]
@@ -110,7 +130,12 @@ public class PlayerMovements : MonoBehaviour
     [NaughtyAttributes.ProgressBar("Stabilizer", 1)]
     [NaughtyAttributes.ReadOnly]
     private float m_stabilizerAccelTime = 0f;
-
+    [SerializeField]
+    bool m_showDebugUI = false;
+#if UNITY_EDITOR
+    [SerializeField]
+    private KeyCode m_debugDashKey = KeyCode.Space;
+#endif
 
     private void Awake()
 	{
@@ -143,12 +168,6 @@ public class PlayerMovements : MonoBehaviour
         CatchInputs();
         CountDown();
     }
-
-    public FloatEvent OnPitchBoosterChanged;
-    public FloatEvent OnYawBoosterChanged;
-    public FloatEvent OnRollBoosterChanged;
-    public FloatEvent OnStabilizerBoosterChanged;
-    public BoolEvent OnSuitFeatureForcedActivation;
 
     private void FixedUpdate()
     {
@@ -184,14 +203,45 @@ public class PlayerMovements : MonoBehaviour
             OnStabilizerBoosterChanged?.Invoke(stabilizerAcc);
             rigidbodyRef.angularDrag = Mathf.Max(m_minAngularDrag, stabilizerAcc * m_stabilizerForce);
         }
+
+        PushAwayFromGround(Time.fixedDeltaTime);
+    }
+
+   
+    // Added this to prevent player to feel like it is just a ball
+    private void PushAwayFromGround(float deltaTime)
+    {
+        Vector3 rayDir = -transform.up;
+        SphereCollider m_colliderRef = GetComponent<SphereCollider>();
+        
+        Vector3 rayOrigin = transform.position + -transform.up * m_colliderRef.radius;
+        
+        Debug.DrawRay(rayOrigin, rayDir * m_pushAwayDistance, Color.red);
+        
+        if (Physics.Raycast(rayOrigin, rayDir, out RaycastHit hitinfo, m_pushAwayDistance))
+        {
+            rigidbodyRef.position += hitinfo.normal * deltaTime * m_pushAwaySpeed;
+        }       
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.layer != m_terrainLayer)
+        {
+            return;
+        }
+
         if (m_AutoStabilizeOnCollision && !m_isAutoStabilizerActive)
         {
             StartCoroutine(Coroutine_AutoStabilizer());
         }
+
+        if (collision.contacts.Length == 0)
+        {
+            return;
+        }
+        
+        OnTerrainCollision?.Invoke(collision.contacts[0].point);
     }
     
     private IEnumerator Coroutine_AutoStabilizer()
@@ -212,6 +262,13 @@ public class PlayerMovements : MonoBehaviour
         ProcessInputValueToAccelTime("Horizontal", ref m_horizontalInputValue, ref m_horizontalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation);
         ProcessInputValueToAccelTime("Vertical", ref m_verticalInputValue, ref m_verticalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation);
         ProcessInputValueToAccelTime("Roll", ref m_rollInputValue, ref m_rollAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation);
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(m_debugDashKey))
+        {
+            OnTimerReachZero();
+        }
+#endif
     }
 
     // Return true if the axis is pressed.
@@ -270,8 +327,7 @@ public class PlayerMovements : MonoBehaviour
 
 #if DEVELOPMENT_BUILD || UNITY_EDITOR
     // ------------------------------------ GUI
-    [SerializeField]
-    bool m_showDebugUI = false;
+    
     float m_referenceWidth = 900;
     Rect m_windowRect = new Rect(0, 0, 400, 200);
     bool m_showSettings = false;
