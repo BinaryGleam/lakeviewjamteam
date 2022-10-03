@@ -83,7 +83,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserDoor
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8615845287834457570, guid: e9e263233edfc054cac7a2cae27b544b, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e9e263233edfc054cac7a2cae27b544b, type: 3}
 --- !u!1 &797766042027145046 stripped
@@ -164,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 6163637752421656303, guid: f44fd7bf92a006a42b2dd1940e3c2a19,
         type: 3}
       propertyPath: m_Name
-      value: LaserWithButton
+      value: LaserWithButton Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7757124985019218041, guid: f44fd7bf92a006a42b2dd1940e3c2a19,
         type: 3}
