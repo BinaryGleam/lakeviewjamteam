@@ -6743,6 +6743,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410987448}
   m_Mesh: {fileID: -7129138321381800130, guid: b7c6446e929fd8c43a5d12c2071edd46, type: 3}
+--- !u!114 &416511340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3193559564540210160, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+    type: 3}
+  m_PrefabInstance: {fileID: 776472819}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b84133d231c11b4f85d90e3b3923f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &419226403
 GameObject:
   m_ObjectHideFlags: 0
@@ -11494,6 +11506,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: OnRollDownLeftBoosterTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 416511340}
+    - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: OnRollDownLeftBoosterTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
     - target: {fileID: 2332937042119063759, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
       propertyPath: m_RootOrder
@@ -11558,6 +11580,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.103881836
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924300444699935311, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8288230411592510415, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}

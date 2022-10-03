@@ -103,11 +103,30 @@ public class PlayerMovements : MonoBehaviour
     private bool m_isAutoStabilizerActive = false;
 
 
+    [NaughtyAttributes.Foldout("Quaternion Booster")]
     public FloatEvent OnPitchBoosterChanged;
+    [NaughtyAttributes.Foldout("Quaternion Booster")]
     public FloatEvent OnYawBoosterChanged;
+    [NaughtyAttributes.Foldout("Quaternion Booster")]
     public FloatEvent OnRollBoosterChanged;
+    [NaughtyAttributes.Foldout("Quaternion Booster")]
     public FloatEvent OnStabilizerBoosterChanged;
+    [NaughtyAttributes.Foldout("Quaternion Booster")]
     public BoolEvent OnSuitFeatureForcedActivation;
+
+    [NaughtyAttributes.Foldout("Booster Sound ")]
+    public UnityEvent OnUpBoosterTrigger;
+    [NaughtyAttributes.Foldout("Booster Sound ")]
+    public UnityEvent OnDownBoosterTrigger;
+    [NaughtyAttributes.Foldout("Booster Sound ")]
+    public UnityEvent OnRightBoosterTrigger;
+    [NaughtyAttributes.Foldout("Booster Sound ")]
+    public UnityEvent OnLeftBoosterTrigger;
+    [NaughtyAttributes.Foldout("Booster Sound ")]
+    public UnityEvent OnRollDownLeftBoosterTrigger;
+    [NaughtyAttributes.Foldout("Booster Sound ")]
+    public UnityEvent OnRollUpRightBoosterTrigger;
+
     public VectorEvent OnTerrainCollision;
 
     [SerializeField]
@@ -191,7 +210,7 @@ public class PlayerMovements : MonoBehaviour
             YawBoosterValue = m_rotationAccelCurve.Evaluate(m_horizontalAccelTime);
             RollBoosterValue = m_rotationAccelCurve.Evaluate(m_rollAccelTime);
         }
-
+        
         OnPitchBoosterChanged?.Invoke(PitchBoosterValue);
         OnYawBoosterChanged?.Invoke(YawBoosterValue);
         OnRollBoosterChanged?.Invoke(RollBoosterValue);
@@ -266,9 +285,14 @@ public class PlayerMovements : MonoBehaviour
 	{
         bool blockRotation = ProcessInputValueToAccelTime("Fire2", ref m_stabilizerInputValue, ref m_stabilizerAccelTime, m_stabilizerAccelTimeReference, false) && !m_canStabilizeAndRotateSimultaneously;
 
-        ProcessInputValueToAccelTime("Horizontal", ref m_horizontalInputValue, ref m_horizontalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation);
-        ProcessInputValueToAccelTime("Vertical", ref m_verticalInputValue, ref m_verticalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation);
-        ProcessInputValueToAccelTime("Roll", ref m_rollInputValue, ref m_rollAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation);
+        ProcessInputValueToAccelTime("Horizontal", ref m_horizontalInputValue, ref m_horizontalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation, 
+            boosterPositiveEvent: OnLeftBoosterTrigger, boosterNegativeEvent: OnRightBoosterTrigger);
+
+        ProcessInputValueToAccelTime("Vertical", ref m_verticalInputValue, ref m_verticalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
+            boosterPositiveEvent: OnDownBoosterTrigger, boosterNegativeEvent: OnUpBoosterTrigger);
+
+        ProcessInputValueToAccelTime("Roll", ref m_rollInputValue, ref m_rollAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
+            boosterPositiveEvent: OnRollDownLeftBoosterTrigger, boosterNegativeEvent: OnRollUpRightBoosterTrigger);
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(m_debugDashKey))
@@ -283,10 +307,23 @@ public class PlayerMovements : MonoBehaviour
     }
 
     // Return true if the axis is pressed.
-    private bool ProcessInputValueToAccelTime(string input, ref float inputValue, ref float accelTime, float accelTimeRef, bool instantReset = true, bool forceReset = false)
+    private bool ProcessInputValueToAccelTime(string input, ref float inputValue, ref float accelTime, float accelTimeRef, bool instantReset = true, bool forceReset = false, UnityEvent boosterPositiveEvent = null, UnityEvent boosterNegativeEvent = null)
     {
         float buffer = inputValue;
         inputValue = Input.GetAxisRaw(input);
+
+        if (buffer == 0 && inputValue != 0)
+        {
+            if (Mathf.Sign(inputValue) > 0)
+            {
+                boosterPositiveEvent?.Invoke();
+            }
+            else
+            {
+                boosterNegativeEvent?.Invoke();
+            }
+        }
+
         if (forceReset
             || Mathf.Approximately(inputValue, 0)
             || buffer == 0 && inputValue != 0
