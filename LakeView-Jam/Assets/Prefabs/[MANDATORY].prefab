@@ -533,6 +533,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2332937042169791524}
     - target: {fileID: 750039201, guid: 8b995b237f1d17849abe2cf04da43b7f, type: 3}
+      propertyPath: OnSuitWarningDisplay.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2332937042276970884}
+    - target: {fileID: 750039201, guid: 8b995b237f1d17849abe2cf04da43b7f, type: 3}
       propertyPath: OnPitchBoosterChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2332937042708111706}
@@ -616,6 +620,11 @@ PrefabInstance:
       objectReference: {fileID: 8636509520688670436}
     - target: {fileID: 5556038599837337852, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
+      propertyPath: objectsDeactivatedOnDeath.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5556038599837337852, guid: 8b995b237f1d17849abe2cf04da43b7f,
+        type: 3}
       propertyPath: objectsDeactivatedOnDeath.Array.data[0]
       value: 
       objectReference: {fileID: 6692199510875061776}
@@ -634,6 +643,11 @@ PrefabInstance:
       propertyPath: objectsDeactivatedOnDeath.Array.data[3]
       value: 
       objectReference: {fileID: 2332937042276970884}
+    - target: {fileID: 5556038599837337852, guid: 8b995b237f1d17849abe2cf04da43b7f,
+        type: 3}
+      propertyPath: objectsDeactivatedOnDeath.Array.data[5]
+      value: 
+      objectReference: {fileID: 966395567194555424}
     - target: {fileID: 5556038599837337852, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.size
@@ -829,6 +843,12 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc7e34ecf9718349ba4f8322c134600, type: 3}
+--- !u!1 &966395567194555424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3245145093200154072, guid: 9bc7e34ecf9718349ba4f8322c134600,
+    type: 3}
+  m_PrefabInstance: {fileID: 2332937042203822584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2332937042169791524 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 34164188, guid: 9bc7e34ecf9718349ba4f8322c134600,

@@ -12,9 +12,12 @@ public class DeathSystem : MonoBehaviour, IKillable
                             activatedOnDeath = null;
 
     public UnityEvent OnDeathEvent;
+    private bool bDead = false;
 
     public bool OnDeath()
 	{
+        if (bDead)
+            return false;
 		foreach (GameObject toActivate in activatedOnDeath)
 		{
             toActivate.SetActive(true);
@@ -29,6 +32,7 @@ public class DeathSystem : MonoBehaviour, IKillable
 		}
 
         OnDeathEvent?.Invoke();
+        bDead = true;
         return true;
 	}
 }

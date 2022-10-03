@@ -12,7 +12,7 @@ public class EndOfLevel : MonoBehaviour
 	public UnityEvent onTriggerEnter = null;
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.tag == "Player")
+		if(other.tag == "Player" && other.GetComponent<PlayerMovements>().enabled)
 		{
 			onTriggerEnter?.Invoke();
 		}
