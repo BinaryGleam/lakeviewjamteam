@@ -327,10 +327,11 @@ public class PlayerMovements : MonoBehaviour
 
         if(chrono <= 0f)
 		{
+#if UNITY_EDITOR
             if (!m_disableAutoDash)
-            {
+#endif
                 OnTimerEnd.Invoke();
-            }
+
             OnSuitFeatureForcedActivation?.Invoke(false);
         }
     }

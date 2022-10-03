@@ -278,6 +278,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[PLAYER]'
       objectReference: {fileID: 0}
+    - target: {fileID: 2789064953511502685, guid: 8b995b237f1d17849abe2cf04da43b7f,
+        type: 3}
+      propertyPath: gunCursor
+      value: 
+      objectReference: {fileID: 5556135430644528857}
     - target: {fileID: 5556038599837337852, guid: 8b995b237f1d17849abe2cf04da43b7f,
         type: 3}
       propertyPath: activatedOnDeath.Array.data[0]
@@ -502,6 +507,12 @@ RectTransform:
 --- !u!1 &5355373594584196709 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7652277707989479325, guid: 9bc7e34ecf9718349ba4f8322c134600,
+    type: 3}
+  m_PrefabInstance: {fileID: 2332937042203822584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5556135430644528857 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7888928161829732129, guid: 9bc7e34ecf9718349ba4f8322c134600,
     type: 3}
   m_PrefabInstance: {fileID: 2332937042203822584}
   m_PrefabAsset: {fileID: 0}
