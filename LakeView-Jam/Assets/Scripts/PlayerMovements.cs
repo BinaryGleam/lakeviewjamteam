@@ -143,11 +143,11 @@ public class PlayerMovements : MonoBehaviour
 
     private void Awake()
 	{
-        if(TimerUI == null)
-		{
-            Debug.LogError(this.name + " timer ui variable wasn't set up in editor. Script gonna auto destroy");
-            Destroy(this);
-        }
+  //      if(TimerUI == null)
+		//{
+  //          Debug.LogError(this.name + " timer ui variable wasn't set up in editor. Script gonna auto destroy");
+  //          Destroy(this);
+  //      }
         rigidbodyRef = GetComponent<Rigidbody>();
         if(rigidbodyRef == null)
 		{
@@ -311,7 +311,11 @@ public class PlayerMovements : MonoBehaviour
     
     private void CountDown()
 	{
-        TimerUI.text = MathF.Ceiling(chrono).ToString();
+        if (TimerUI)
+        {
+            TimerUI.text = MathF.Ceiling(chrono).ToString();
+        }
+
         chrono -= Time.deltaTime;
         if(chrono <= m_warningDisplayTime)
         {
@@ -320,7 +324,7 @@ public class PlayerMovements : MonoBehaviour
 
         if(chrono <= 0f)
 		{
-            if (m_disableAutoDash)
+            if (!m_disableAutoDash)
             {
                 OnTimerEnd.Invoke();
             }
