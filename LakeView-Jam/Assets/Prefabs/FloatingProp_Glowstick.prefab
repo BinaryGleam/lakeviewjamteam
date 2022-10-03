@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1464026131833633172}
   - component: {fileID: 6071529302590692320}
   - component: {fileID: 1464026131833633169}
-  - component: {fileID: 359210894070183705}
   - component: {fileID: 1464026131833633175}
   - component: {fileID: 1464026131833633171}
+  - component: {fileID: 114987216421804493}
   m_Layer: 0
   m_Name: FloatingProp_Glowstick
   m_TagString: Untagged
@@ -87,20 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &359210894070183705
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464026131833633173}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5208009219709363957, guid: 650905034da09464e9023e5b1471d62e, type: 3}
 --- !u!54 &1464026131833633175
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -112,7 +98,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -134,3 +120,16 @@ MonoBehaviour:
   angularInitForceMin: {x: -0.12, y: -0.12, z: -0.12}
   angularInitForceMax: {x: 0.12, y: 0.12, z: 0.12}
   bulletForceResponse: 5
+--- !u!65 &114987216421804493
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464026131833633173}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.00036107696, y: 0.0003434046, z: 0.002864988}
+  m_Center: {x: 2.1827873e-11, y: 0.000018127088, z: 5.820766e-11}

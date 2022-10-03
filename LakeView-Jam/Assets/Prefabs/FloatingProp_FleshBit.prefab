@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1464026131833633172}
   - component: {fileID: 6071529302590692320}
   - component: {fileID: 1464026131833633169}
-  - component: {fileID: 359210894070183705}
   - component: {fileID: 1464026131833633175}
   - component: {fileID: 1464026131833633171}
+  - component: {fileID: 8488258203679408765}
   m_Layer: 0
   m_Name: FloatingProp_FleshBit
   m_TagString: Untagged
@@ -86,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &359210894070183705
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464026131833633173}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1920128803270716177, guid: d9338a863fc9b9440b3d943a3a8052f2, type: 3}
 --- !u!54 &1464026131833633175
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -133,3 +119,16 @@ MonoBehaviour:
   angularInitForceMin: {x: -0.12, y: -0.12, z: -0.12}
   angularInitForceMax: {x: 0.12, y: 0.12, z: 0.12}
   bulletForceResponse: 5
+--- !u!135 &8488258203679408765
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464026131833633173}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.003
+  m_Center: {x: -0.000055482844, y: 0.0005627803, z: 0.00038629968}
