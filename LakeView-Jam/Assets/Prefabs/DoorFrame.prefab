@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7802800987199738377}
   - component: {fileID: 8230535268078506943}
   - component: {fileID: 3997908750276851869}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DoorFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,6 +222,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (Right)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2e57ae862edbdf24ebfc4b992b8605a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e57ae862edbdf24ebfc4b992b8605a1, type: 3}
@@ -337,6 +342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door (Left)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2e57ae862edbdf24ebfc4b992b8605a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
