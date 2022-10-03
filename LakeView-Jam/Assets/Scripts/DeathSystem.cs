@@ -14,6 +14,7 @@ public class DeathSystem : MonoBehaviour, IKillable
     public UnityEvent OnDeathEvent;
     private bool bDead = false;
 
+    [NaughtyAttributes.Button]
     public bool OnDeath()
 	{
         if (bDead)

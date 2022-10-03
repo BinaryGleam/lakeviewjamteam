@@ -57,6 +57,7 @@ public class ScreenFader_ColorAdjustmentEffect : MonoBehaviour
         if (m_currentTime == -1)
         {
             m_colorAdjustments.active = true;
+            
             m_currentTime = 0;
             m_masterMixer.GetFloat("MasterVolume", out float initialVolume);
             m_masterMixer.GetFloat("MasterPitch", out float initialPitch);

@@ -40,6 +40,8 @@ public class PlaySoundEffect : MonoBehaviour
         }
 #endif
 
+        loopRandomSounds = false;
+        waitingForNewPlay = false;
         m_AudioSource.Stop();
     }
 

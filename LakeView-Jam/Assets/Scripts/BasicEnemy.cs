@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BasicEnemy : MonoBehaviour, IShootable, IKillable
 {
@@ -14,13 +15,14 @@ public class BasicEnemy : MonoBehaviour, IShootable, IKillable
     private Transform target = null;
     [SerializeField]
     private GameObject Gore = null;
+    public UnityEvent OnDeathEvent;
 
     public bool OnGettingShot(RaycastHit hit)
 	{
         rigidbodyRef.AddForceAtPosition(-hit.normal * bulletForceResponse, hit.point, ForceMode.Impulse);
         OnDeath();
         return true;
-	}
+    	}
 
     public bool OnDeath()
 	{
@@ -28,6 +30,7 @@ public class BasicEnemy : MonoBehaviour, IShootable, IKillable
         Gore?.SetActive(true);
         gameObject.AddComponent(System.Type.GetType("FloatingProp"));
         GetComponent<FloatingProp>().bulletForceResponse = bulletForceResponse;
+        OnDeathEvent?.Invoke();
         Destroy(this);
         return true;
 	}
@@ -62,7 +65,11 @@ public class BasicEnemy : MonoBehaviour, IShootable, IKillable
 	{
 		if(collision.collider.tag == "Player")
 		{
-            collision.collider.GetComponent<IKillable>()?.OnDeath();
+            foreach(var killable in collision.collider.GetComponents<IKillable>())
+            {
+                killable.OnDeath();
+            }
+
 		}
 	}
 
