@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 988893214852956016}
   - component: {fileID: 7802800987199738377}
   - component: {fileID: 8230535268078506943}
+  - component: {fileID: 3997908750276851869}
   m_Layer: 0
   m_Name: DoorFrame
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   - {fileID: 2157908114002945806}
   - {fileID: 4870807869916753201}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3052796690186259386
 MeshFilter:
@@ -121,6 +122,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6274059880062070182, guid: 6a18a70ec07fcf94d98545766614372e, type: 3}
+--- !u!114 &3997908750276851869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637548106100055717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8054aab765a5fa64ab626aa0e08224db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1907508098607169765
 PrefabInstance:
   m_ObjectHideFlags: 0
