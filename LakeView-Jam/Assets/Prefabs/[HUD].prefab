@@ -3162,7 +3162,7 @@ GameObject:
   - component: {fileID: 636468415507144526}
   - component: {fileID: 636468415507144527}
   m_Layer: 2
-  m_Name: HUD
+  m_Name: '[HUD]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

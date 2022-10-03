@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerGun : MonoBehaviour
 {
@@ -32,6 +33,9 @@ public class PlayerGun : MonoBehaviour
     [SerializeField]
     private Vector3 shootLinearCounterForce = Vector3.zero,
                     shootAngularCounterForce = Vector3.zero;
+
+    public UnityEvent OnShot;
+
     void Awake()
     {
         lineRendererRef = GetComponent<LineRenderer>();
@@ -84,13 +88,16 @@ public class PlayerGun : MonoBehaviour
     [SerializeField, Min(1)]
     private float ProjectionDistance = 1;
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(mouseRayWorld.origin + mouseRayWorld.direction * ProjectionDistance, .25f);
     }
+#endif
 
     private void OnShoot()
 	{
+        OnShot?.Invoke();
         m_animator.SetTrigger(m_animatorParam);
         rigidbodyRef.AddRelativeForce(shootLinearCounterForce, ForceMode.Impulse);
         rigidbodyRef.AddRelativeTorque(shootAngularCounterForce, ForceMode.Impulse);

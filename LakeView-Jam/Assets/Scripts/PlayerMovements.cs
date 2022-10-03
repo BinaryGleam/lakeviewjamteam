@@ -134,6 +134,10 @@ public class PlayerMovements : MonoBehaviour
     bool m_showDebugUI = false;
 #if UNITY_EDITOR
     [SerializeField]
+    bool m_disableAutoDash = false;
+    [SerializeField]
+    private KeyCode m_debugDisableAutoDashKey = KeyCode.X;
+    [SerializeField]
     private KeyCode m_debugDashKey = KeyCode.Space;
 #endif
 
@@ -268,6 +272,10 @@ public class PlayerMovements : MonoBehaviour
         {
             OnTimerReachZero();
         }
+        if(Input.GetKeyDown(m_debugDisableAutoDashKey))
+        {
+            m_disableAutoDash = !m_disableAutoDash;
+        }
 #endif
     }
 
@@ -312,7 +320,10 @@ public class PlayerMovements : MonoBehaviour
 
         if(chrono <= 0f)
 		{
-            OnTimerEnd.Invoke();
+            if (m_disableAutoDash)
+            {
+                OnTimerEnd.Invoke();
+            }
             OnSuitFeatureForcedActivation?.Invoke(false);
         }
     }
