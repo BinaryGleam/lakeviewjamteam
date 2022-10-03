@@ -9,4 +9,12 @@ public class MenuFunctions : MonoBehaviour
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
+
+	private void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.R))
+		{
+			RestartLevel();
+		}
+	}
 }

@@ -2891,7 +2891,8 @@ GameObject:
   - component: {fileID: 5789357968717349110}
   - component: {fileID: 8739497163374048076}
   - component: {fileID: 3295035940232927947}
-  m_Layer: 2
+  - component: {fileID: 8236509218631810692}
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3015,6 +3016,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &8236509218631810692
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498107795305238760}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &636468414135073622
 GameObject:
   m_ObjectHideFlags: 0
@@ -3186,6 +3199,7 @@ RectTransform:
   - {fileID: 1198395982}
   - {fileID: 195836029}
   - {fileID: 979886510911076402}
+  - {fileID: 8219167587615082928}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3268,7 +3282,7 @@ GameObject:
   - component: {fileID: 6024882805275989441}
   - component: {fileID: 1175313594939409189}
   - component: {fileID: 5934940917431236414}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: DeathVFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3292,8 +3306,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.8908005, y: -2.7945995}
-  m_SizeDelta: {x: 565.9305, y: 268.2912}
+  m_AnchoredPosition: {x: 5.9962, y: -7.2166}
+  m_SizeDelta: {x: 603.5169, y: 440.7467}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6024882805275989441
 CanvasRenderer:
@@ -3345,6 +3359,73 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!1 &2004333586070140420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8219167587615082928}
+  - component: {fileID: 2623411321654399085}
+  - component: {fileID: 7374848133454615103}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8219167587615082928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004333586070140420}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -320, y: -240, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 636468415507144524}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2623411321654399085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004333586070140420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &7374848133454615103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004333586070140420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1 &4483776843091789687
 GameObject:
   m_ObjectHideFlags: 0
@@ -3356,7 +3437,7 @@ GameObject:
   - component: {fileID: 8478796301256908074}
   - component: {fileID: 5260532961830235379}
   - component: {fileID: 6302671666849196213}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3411,7 +3492,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restart Level
+  m_text: Press R to restart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3489,7 +3570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 979886510911076402}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: DeathHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3687,7 +3768,7 @@ GameObject:
   - component: {fileID: 8690258424224946007}
   - component: {fileID: 7962200756498004884}
   - component: {fileID: 4344091948447792353}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3713,7 +3794,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -113.4}
-  m_SizeDelta: {x: 320.4081, y: 61.4526}
+  m_SizeDelta: {x: 364.7675, y: 61.4526}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4825686372601460033
 CanvasRenderer:
