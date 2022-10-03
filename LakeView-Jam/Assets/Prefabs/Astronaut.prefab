@@ -1504,6 +1504,7 @@ MonoBehaviour:
   m_pitchRange: {x: 0.85, y: 1.15}
   loopRandomSounds: 0
   m_TimerBetweenPlaySE: {x: 0, y: 0}
+  waitingForNewPlay: 0
 --- !u!4 &8085358839860265599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5101540234392692151, guid: 8887bd352b0d96e459bd838c17a6df78,
@@ -1631,3 +1632,4 @@ MonoBehaviour:
   m_pitchRange: {x: 0.85, y: 1.15}
   loopRandomSounds: 1
   m_TimerBetweenPlaySE: {x: 2, y: 5}
+  waitingForNewPlay: 0
