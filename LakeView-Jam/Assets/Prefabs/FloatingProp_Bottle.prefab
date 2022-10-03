@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1464026131833633175}
   - component: {fileID: 1464026131833633171}
   m_Layer: 0
-  m_Name: FloatingProp
+  m_Name: FloatingProp_Bottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
