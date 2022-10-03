@@ -34,5 +34,6 @@ public class DoorButton : MonoBehaviour, IShootable
         bBroke = true;
         statusLight.enabled = false;
         transform.parent = null;
+        GetComponent<IKillable>()?.OnDeath();
     }
 }
