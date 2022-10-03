@@ -31,6 +31,7 @@ public class DoorButton : MonoBehaviour, IShootable
 
     private void OnBreak()
 	{
+        Debug.Log("destroyed");
         bBroke = true;
         statusLight.enabled = false;
         transform.parent = null;
