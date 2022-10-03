@@ -12,6 +12,8 @@ public class BasicEnemy : MonoBehaviour, IShootable, IKillable
     private Rigidbody rigidbodyRef = null;
     private Animator animatorRef = null;
     private Transform target = null;
+    [SerializeField]
+    private GameObject Gore = null;
 
     public bool OnGettingShot(RaycastHit hit)
 	{
@@ -23,6 +25,7 @@ public class BasicEnemy : MonoBehaviour, IShootable, IKillable
     public bool OnDeath()
 	{
         animatorRef.SetBool("bDead", true);
+        Gore?.SetActive(true);
         gameObject.AddComponent(System.Type.GetType("FloatingProp"));
         GetComponent<FloatingProp>().bulletForceResponse = bulletForceResponse;
         Destroy(this);

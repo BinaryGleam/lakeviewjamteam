@@ -305,7 +305,7 @@ Transform:
   - {fileID: 2551428022481368358}
   - {fileID: 8085358839860265599}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &851056879905718384
 CapsuleCollider:
@@ -400,6 +400,7 @@ MonoBehaviour:
   lerpSpeed: 10
   moveSpeed: 5
   bulletForceResponse: 50
+  Gore: {fileID: 1176497383}
 --- !u!114 &9175723660790064278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +444,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7994255482674020144}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1176497383}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &7209680451442448597
 GameObject:
@@ -1504,6 +1529,7 @@ MonoBehaviour:
   m_pitchRange: {x: 0.85, y: 1.15}
   loopRandomSounds: 0
   m_TimerBetweenPlaySE: {x: 0, y: 0}
+  waitingForNewPlay: 0
 --- !u!4 &8085358839860265599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5101540234392692151, guid: 8887bd352b0d96e459bd838c17a6df78,
@@ -1631,3 +1657,4 @@ MonoBehaviour:
   m_pitchRange: {x: 0.85, y: 1.15}
   loopRandomSounds: 1
   m_TimerBetweenPlaySE: {x: 2, y: 5}
+  waitingForNewPlay: 0
