@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: c3d11493752634f7a9122f557c4f8883
+guid: 2a901dee1962349158dd9859ca8bfebd
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Button
-    second: {fileID: 2100000, guid: 64b386a08076a274aa83448a49bb353f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Emission
-    second: {fileID: 2100000, guid: c4ecc69dec8a1426a81e03af49720ddf, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Fuses
-    second: {fileID: 2100000, guid: c4ecc69dec8a1426a81e03af49720ddf, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

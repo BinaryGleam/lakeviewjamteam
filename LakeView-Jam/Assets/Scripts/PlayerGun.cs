@@ -54,7 +54,7 @@ public class PlayerGun : MonoBehaviour
             Destroy(this);
         }
 
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     void Update()
