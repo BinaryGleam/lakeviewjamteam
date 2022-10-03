@@ -2672,8 +2672,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_audioClipArray:
-  - {fileID: 8300000, guid: dfb1dfb9e26d04205bca0b1cb15bba11, type: 3}
-  m_pitchRange: {x: 1.4, y: 1.5}
+  - {fileID: 8300000, guid: 94eec2b1a80d1d94897840999ade7e34, type: 3}
+  m_pitchRange: {x: 0.9, y: 1.1}
 --- !u!1 &6862006525385003218
 GameObject:
   m_ObjectHideFlags: 0
