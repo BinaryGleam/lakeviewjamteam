@@ -511,7 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpSpeed: 10
-  moveSpeed: 0
+  moveSpeed: 2
   bulletForceResponse: 15
   Gore: {fileID: 1176497383}
   OnDeathEvent:
