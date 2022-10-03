@@ -156,14 +156,19 @@ public class PlayerMovements : MonoBehaviour
     private float m_stabilizerAccelTime = 0f;
     [SerializeField]
     bool m_showDebugUI = false;
-#if UNITY_EDITOR
     [SerializeField]
     bool m_disableAutoDash = false;
+#if UNITY_EDITOR
     [SerializeField]
     private KeyCode m_debugDisableAutoDashKey = KeyCode.X;
     [SerializeField]
     private KeyCode m_debugDashKey = KeyCode.Space;
 #endif
+
+
+    [SerializeField]
+    private KeyCode m_keyLogEscape = KeyCode.Space;
+
 
     private void Awake()
 	{
@@ -282,8 +287,16 @@ public class PlayerMovements : MonoBehaviour
         OnStabilizerBoosterChanged?.Invoke(0);
         m_isAutoStabilizerActive = false;
     }
+    
 
-	private void CatchInputs()
+    public void OnLogBegin()
+    {
+        m_disableAutoDash = true;
+    }
+
+    public UnityEvent OnLogExit;
+	
+    private void CatchInputs()
 	{
         bool blockRotation = ProcessInputValueToAccelTime("Fire2", ref m_stabilizerInputValue, ref m_stabilizerAccelTime, m_stabilizerAccelTimeReference, false) && !m_canStabilizeAndRotateSimultaneously;
 
@@ -295,6 +308,12 @@ public class PlayerMovements : MonoBehaviour
 
         ProcessInputValueToAccelTime("Roll", ref m_rollInputValue, ref m_rollAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
             boosterPositiveEvent: OnRollDownLeftBoosterTrigger, boosterNegativeEvent: OnRollUpRightBoosterTrigger);
+
+        if (Input.GetKeyDown(m_keyLogEscape))
+        {
+            OnLogExit?.Invoke();
+            m_disableAutoDash = false;
+        }
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(m_debugDashKey))
