@@ -11921,6 +11921,11 @@ PrefabInstance:
       propertyPath: m_fadeOutDefinition.OnFadeEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8288230411592510411, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: nextLevel
+      value: Level_1
+      objectReference: {fileID: 0}
     - target: {fileID: 8288230411592510415, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
       propertyPath: m_LocalPosition.x
