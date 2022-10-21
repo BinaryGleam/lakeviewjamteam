@@ -50677,7 +50677,7 @@ PrefabInstance:
     - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
       propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
@@ -50686,9 +50686,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
+      propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
       propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1787808705}
+    - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1787808706}
     - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
       propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -50701,12 +50711,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
+      propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
       propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
+      propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayerGun, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
       propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332937041855789467, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: OnLogExit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2332937041949926473, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
@@ -50915,6 +50945,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1787808703}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1787808706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 492297730431248999, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+    type: 3}
+  m_PrefabInstance: {fileID: 1787808703}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e67868d963157f4eb6b310ca7507242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1794444246
 GameObject:
   m_ObjectHideFlags: 0

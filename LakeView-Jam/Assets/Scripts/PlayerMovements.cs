@@ -54,9 +54,7 @@ public class PlayerMovements : MonoBehaviour
     private float m_horizontalInputValue = 0f,
                     m_verticalInputValue = 0f,
                     m_rollInputValue = 0f,
-                    chronoMax = 10f,
-                    chrono;
-
+                    chronoMax = 10f;
 
     [Header("Special Feature")]
     [NaughtyAttributes.HorizontalLine(1)]
@@ -138,6 +136,9 @@ public class PlayerMovements : MonoBehaviour
     //-------------- DEBUG
     [Header("Debug")]
     [NaughtyAttributes.HorizontalLine(1)]
+    [NaughtyAttributes.ReadOnly]
+    [SerializeField, NaughtyAttributes.ProgressBar("Countdown", 10)]
+    private float chrono;
     [SerializeField]
     [NaughtyAttributes.ReadOnly]
     [NaughtyAttributes.ProgressBar("Yaw", 1)]
@@ -158,6 +159,7 @@ public class PlayerMovements : MonoBehaviour
     bool m_showDebugUI = false;
     [SerializeField]
     bool m_disableAutoDash = false;
+    bool m_onLogReading = false;
 #if UNITY_EDITOR
     [SerializeField]
     private KeyCode m_debugDisableAutoDashKey = KeyCode.X;
@@ -166,8 +168,8 @@ public class PlayerMovements : MonoBehaviour
 #endif
 
 
-    [SerializeField]
-    private KeyCode m_keyLogEscape = KeyCode.Space;
+    [SerializeField, NaughtyAttributes.InputAxis]
+    private string m_keyLogEscape;
 
 
     private void Awake()
@@ -204,12 +206,17 @@ public class PlayerMovements : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (m_onLogReading)
+        {
+            return;
+        }
+
         float PitchBoosterValue, YawBoosterValue, RollBoosterValue;
         if (m_useContinuousRotation)
         {
-            PitchBoosterValue = m_continuousRotationAccelCurve.Evaluate(m_verticalAccelTime);
-            YawBoosterValue = m_continuousRotationAccelCurve.Evaluate(m_horizontalAccelTime);
-            RollBoosterValue = m_continuousRotationAccelCurve.Evaluate(m_rollAccelTime);
+            PitchBoosterValue = m_verticalAccelTime == 0 ? 0 : m_continuousRotationAccelCurve.Evaluate(m_verticalAccelTime);
+            YawBoosterValue = m_horizontalAccelTime == 0 ? 0 : m_continuousRotationAccelCurve.Evaluate(m_horizontalAccelTime);
+            RollBoosterValue = m_rollAccelTime == 0 ? 0 : m_continuousRotationAccelCurve.Evaluate(m_rollAccelTime);
         }
         else
         {
@@ -288,31 +295,34 @@ public class PlayerMovements : MonoBehaviour
         m_isAutoStabilizerActive = false;
     }
     
-
     public void OnLogBegin()
     {
         m_disableAutoDash = true;
+        m_onLogReading = true;
     }
 
     public UnityEvent OnLogExit;
 	
     private void CatchInputs()
 	{
-        bool blockRotation = ProcessInputValueToAccelTime("Fire2", ref m_stabilizerInputValue, ref m_stabilizerAccelTime, m_stabilizerAccelTimeReference, false) && !m_canStabilizeAndRotateSimultaneously;
+        if (!m_onLogReading)
+        {
+            bool blockRotation = ProcessInputValueToAccelTime("Fire2", ref m_stabilizerInputValue, ref m_stabilizerAccelTime, m_stabilizerAccelTimeReference, false) && !m_canStabilizeAndRotateSimultaneously;
 
-        ProcessInputValueToAccelTime("Horizontal", ref m_horizontalInputValue, ref m_horizontalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation, 
-            boosterPositiveEvent: OnLeftBoosterTrigger, boosterNegativeEvent: OnRightBoosterTrigger);
+            ProcessInputValueToAccelTime("Horizontal", ref m_horizontalInputValue, ref m_horizontalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation, 
+                boosterPositiveEvent: OnLeftBoosterTrigger, boosterNegativeEvent: OnRightBoosterTrigger);
 
-        ProcessInputValueToAccelTime("Vertical", ref m_verticalInputValue, ref m_verticalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
-            boosterPositiveEvent: OnDownBoosterTrigger, boosterNegativeEvent: OnUpBoosterTrigger);
+            ProcessInputValueToAccelTime("Vertical", ref m_verticalInputValue, ref m_verticalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
+                boosterPositiveEvent: OnDownBoosterTrigger, boosterNegativeEvent: OnUpBoosterTrigger);
 
-        ProcessInputValueToAccelTime("Roll", ref m_rollInputValue, ref m_rollAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
-            boosterPositiveEvent: OnRollDownLeftBoosterTrigger, boosterNegativeEvent: OnRollUpRightBoosterTrigger);
-
-        if (Input.GetKeyDown(m_keyLogEscape))
+            ProcessInputValueToAccelTime("Roll", ref m_rollInputValue, ref m_rollAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
+                boosterPositiveEvent: OnRollDownLeftBoosterTrigger, boosterNegativeEvent: OnRollUpRightBoosterTrigger);
+        }
+        else if (Input.GetAxis(m_keyLogEscape) != 0)
         {
             OnLogExit?.Invoke();
             m_disableAutoDash = false;
+            m_onLogReading = false;
         }
 
 #if UNITY_EDITOR
@@ -372,6 +382,11 @@ public class PlayerMovements : MonoBehaviour
     private bool m_suitFeatureActivationFlip = false;
     private void CountDown()
 	{
+        if (m_onLogReading)
+        {
+            return;
+        }
+
         if (TimerUI)
         {
             TimerUI.text = MathF.Ceiling(chrono).ToString();
