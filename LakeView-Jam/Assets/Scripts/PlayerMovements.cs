@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.InputSystem;
 
 [Serializable]
 public class FloatEvent : UnityEvent<float> { }
@@ -51,10 +52,11 @@ public class PlayerMovements : MonoBehaviour
     private float m_pushAwaySpeed = .5f;
 
     private Rigidbody rigidbodyRef = null;
-    private float m_horizontalInputValue = 0f,
-                    m_verticalInputValue = 0f,
-                    m_rollInputValue = 0f,
-                    chronoMax = 10f;
+    private float chronoMax = 10f;
+    
+
+   
+
 
     [Header("Special Feature")]
     [NaughtyAttributes.HorizontalLine(1)]
@@ -88,6 +90,7 @@ public class PlayerMovements : MonoBehaviour
     [Range(0f, 5f)]
     private float m_stabilizerForce = 1f;
     private float m_stabilizerInputValue = 0f;
+    
 
     //-------------- STABILIZER
     [Header("Auto Stabilizer")]
@@ -137,22 +140,22 @@ public class PlayerMovements : MonoBehaviour
     [Header("Debug")]
     [NaughtyAttributes.HorizontalLine(1)]
     [NaughtyAttributes.ReadOnly]
-    [SerializeField, NaughtyAttributes.ProgressBar("Countdown", 10)]
+    [SerializeField]
     private float chrono;
+    // [SerializeField]
+    // [NaughtyAttributes.ReadOnly]
+    // [NaughtyAttributes.ProgressBar("Yaw", 1)]
+    // private float m_horizontalAccelTime = 0f;
+    // [SerializeField]
+    // [NaughtyAttributes.ProgressBar("Pitch", 1)]
+    // [NaughtyAttributes.ReadOnly]
+    // private float m_verticalAccelTime = 0f;
     [SerializeField]
-    [NaughtyAttributes.ReadOnly]
-    [NaughtyAttributes.ProgressBar("Yaw", 1)]
-    private float m_horizontalAccelTime = 0f;
-    [SerializeField]
-    [NaughtyAttributes.ProgressBar("Pitch", 1)]
-    [NaughtyAttributes.ReadOnly]
-    private float m_verticalAccelTime = 0f;
-    [SerializeField]
-    [NaughtyAttributes.ProgressBar("Roll", 1)]
+    //[NaughtyAttributes.ProgressBar("Roll", 1)]
     [NaughtyAttributes.ReadOnly]
     private float m_rollAccelTime = 0f;
     [SerializeField]
-    [NaughtyAttributes.ProgressBar("Stabilizer", 1)]
+    //[NaughtyAttributes.ProgressBar("Stabilizer", 1)]
     [NaughtyAttributes.ReadOnly]
     private float m_stabilizerAccelTime = 0f;
     [SerializeField]
@@ -172,13 +175,29 @@ public class PlayerMovements : MonoBehaviour
     private string m_keyLogEscape;
 
 
+    [SerializeField, NaughtyAttributes.ReadOnly]
+    private Vector2 m_rotationInputValue;
+    private Vector2 m_rotationAccelTime;
+    [NaughtyAttributes.ReadOnly, SerializeField]
+    private float PitchBoosterValue;
+    [NaughtyAttributes.ReadOnly, SerializeField]
+    private float YawBoosterValue;
+    [NaughtyAttributes.ReadOnly, SerializeField]
+    private float m_rollInputValue = 0f;
+    [NaughtyAttributes.ReadOnly, SerializeField]
+    private float RollBoosterValue;
+    
+    private PlayerInput m_playerInput;
+
     private void Awake()
 	{
-  //      if(TimerUI == null)
-		//{
-  //          Debug.LogError(this.name + " timer ui variable wasn't set up in editor. Script gonna auto destroy");
-  //          Destroy(this);
-  //      }
+        //      if(TimerUI == null)
+        //{
+        //          Debug.LogError(this.name + " timer ui variable wasn't set up in editor. Script gonna auto destroy");
+        //          Destroy(this);
+        //      }
+        m_playerInput = GetComponent<PlayerInput>();
+
         rigidbodyRef = GetComponent<Rigidbody>();
         if(rigidbodyRef == null)
 		{
@@ -211,17 +230,16 @@ public class PlayerMovements : MonoBehaviour
             return;
         }
 
-        float PitchBoosterValue, YawBoosterValue, RollBoosterValue;
         if (m_useContinuousRotation)
         {
-            PitchBoosterValue = m_verticalAccelTime == 0 ? 0 : m_continuousRotationAccelCurve.Evaluate(m_verticalAccelTime);
-            YawBoosterValue = m_horizontalAccelTime == 0 ? 0 : m_continuousRotationAccelCurve.Evaluate(m_horizontalAccelTime);
+            PitchBoosterValue = m_rotationAccelTime.y == 0 ? 0 : m_continuousRotationAccelCurve.Evaluate(m_rotationAccelTime.y);
+            YawBoosterValue = m_rotationAccelTime.x == 0 ? 0 : m_continuousRotationAccelCurve.Evaluate(m_rotationAccelTime.x);
             RollBoosterValue = m_rollAccelTime == 0 ? 0 : m_continuousRotationAccelCurve.Evaluate(m_rollAccelTime);
         }
         else
         {
-            PitchBoosterValue = m_rotationAccelCurve.Evaluate(m_verticalAccelTime);
-            YawBoosterValue = m_rotationAccelCurve.Evaluate(m_horizontalAccelTime);
+            PitchBoosterValue = m_rotationAccelCurve.Evaluate(m_rotationAccelTime.y);
+            YawBoosterValue = m_rotationAccelCurve.Evaluate(m_rotationAccelTime.x);
             RollBoosterValue = m_rotationAccelCurve.Evaluate(m_rollAccelTime);
         }
         
@@ -229,8 +247,8 @@ public class PlayerMovements : MonoBehaviour
         OnYawBoosterChanged?.Invoke(YawBoosterValue);
         OnRollBoosterChanged?.Invoke(RollBoosterValue);
 
-        Vector3 torqueSpeed = new Vector3(PitchBoosterValue * Mathf.Sign(m_verticalInputValue), 
-            YawBoosterValue * Mathf.Sign(m_horizontalInputValue), 
+        Vector3 torqueSpeed = new Vector3(PitchBoosterValue * Mathf.Sign(m_rotationInputValue.y), 
+            YawBoosterValue * Mathf.Sign(m_rotationInputValue.x), 
             RollBoosterValue * Mathf.Sign(m_rollInputValue));
 
         torqueSpeed.Scale(m_rotationSpeed);
@@ -306,16 +324,21 @@ public class PlayerMovements : MonoBehaviour
     private void CatchInputs()
 	{
         if (!m_onLogReading)
-        {
-            bool blockRotation = ProcessInputValueToAccelTime("Fire2", ref m_stabilizerInputValue, ref m_stabilizerAccelTime, m_stabilizerAccelTimeReference, false) && !m_canStabilizeAndRotateSimultaneously;
+        {      
+            // We disabled this feature
+            // bool blockRotation = ProcessInputValueToAccelTime("Fire2", ref m_stabilizerInputValue, ref m_stabilizerAccelTime, m_stabilizerAccelTimeReference, false) && !m_canStabilizeAndRotateSimultaneously;
 
-            ProcessInputValueToAccelTime("Horizontal", ref m_horizontalInputValue, ref m_horizontalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation, 
-                boosterPositiveEvent: OnLeftBoosterTrigger, boosterNegativeEvent: OnRightBoosterTrigger);
+            // OLD
+            // ProcessInputValueToAccelTime("Horizontal", ref m_horizontalInputValue, ref m_horizontalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation, 
+            //     boosterPositiveEvent: OnLeftBoosterTrigger, boosterNegativeEvent: OnRightBoosterTrigger);
+            // 
+            // ProcessInputValueToAccelTime("Vertical", ref m_verticalInputValue, ref m_verticalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
+            //     boosterPositiveEvent: OnDownBoosterTrigger, boosterNegativeEvent: OnUpBoosterTrigger);
 
-            ProcessInputValueToAccelTime("Vertical", ref m_verticalInputValue, ref m_verticalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
-                boosterPositiveEvent: OnDownBoosterTrigger, boosterNegativeEvent: OnUpBoosterTrigger);
+            ProcessInputValueToAccelTime("Rotate", ref m_rotationInputValue, ref m_rotationAccelTime, m_rotationAccelTimeReference,
+                OnDownBoosterTrigger, OnUpBoosterTrigger, OnLeftBoosterTrigger, OnRightBoosterTrigger);
 
-            ProcessInputValueToAccelTime("Roll", ref m_rollInputValue, ref m_rollAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
+            ProcessInputValueToAccelTime("Roll", ref m_rollInputValue, ref m_rollAccelTime, m_rotationAccelTimeReference,
                 boosterPositiveEvent: OnRollDownLeftBoosterTrigger, boosterNegativeEvent: OnRollUpRightBoosterTrigger);
         }
         else if (Input.GetAxis(m_keyLogEscape) != 0)
@@ -337,15 +360,57 @@ public class PlayerMovements : MonoBehaviour
 #endif
     }
 
-    // Return true if the axis is pressed.
-    private bool ProcessInputValueToAccelTime(string input, ref float inputValue, ref float accelTime, float accelTimeRef, bool instantReset = true, bool forceReset = false, UnityEvent boosterPositiveEvent = null, UnityEvent boosterNegativeEvent = null)
+    // No template specialization in C# (because no compilation time :x) 
+    private bool ProcessInputValueToAccelTime(string actionName, ref float inputValue, ref float accelTime, float accelTimeRef, UnityEvent boosterPositiveEvent = null, UnityEvent boosterNegativeEvent = null)        
     {
-        float buffer = inputValue;
-        inputValue = Input.GetAxisRaw(input);
+# if ENABLE_INPUT_SYSTEM
+        float val = m_playerInput.actions[actionName].ReadValue<float>();
+#else
+        var val = Input.GetAxisRaw(actionName);
+#endif
+        return ProcessInputValueToAccelTimeGeneric(val, ref inputValue, ref accelTime, accelTimeRef, true, false, boosterPositiveEvent, boosterNegativeEvent);
+    }
 
-        if (buffer == 0 && inputValue != 0)
+    private bool ProcessInputValueToAccelTime(string actionName, ref Vector2 inputValue, ref Vector2 accelTime, float accelTimeRef,
+        UnityEvent boosterVPositiveEvent, UnityEvent boosterVNegativeEvent, UnityEvent boosterHPositiveEvent, UnityEvent boosterHNegativeEvent)
+    {
+# if ENABLE_INPUT_SYSTEM
+        Vector2 val = m_playerInput.actions[actionName].ReadValue<Vector2>();
+#else
+        var val = Input.GetAxisRaw(actionName);
+#endif
+        return ProcessInputValueToAccelTimeGeneric(val, ref inputValue, ref accelTime, accelTimeRef, true,
+            boosterVPositiveEvent, boosterVNegativeEvent, boosterHPositiveEvent, boosterHNegativeEvent);
+    }
+
+    [SerializeField]
+    private float joystickDeadZone = 0.4f;
+    private bool ProcessInputValueToAccelTimeGeneric(Vector2 newInputValue, ref Vector2 inputValue, ref Vector2 accelTime, float accelTimeRef, bool instantReset,
+        UnityEvent boosterVPositiveEvent, UnityEvent boosterVNegativeEvent, UnityEvent boosterHPositiveEvent, UnityEvent boosterHNegativeEvent)
+    {
+        float xSign = Mathf.Sign(newInputValue.x);
+        float ySign = Mathf.Sign(newInputValue.y);
+        float xAbs = Mathf.Abs(newInputValue.x);
+        float yAbs = Mathf.Abs(newInputValue.y);
+
+        newInputValue.x = xAbs > joystickDeadZone /*&& xAbs > yAbs*/? xSign : 0f;
+        newInputValue.y = yAbs > joystickDeadZone /*&& yAbs > xAbs */? ySign : 0f;
+
+        bool xResult = ProcessInputValueToAccelTimeGeneric(newInputValue.x, ref inputValue.x, ref accelTime.x, accelTimeRef, instantReset, false, boosterHPositiveEvent, boosterHNegativeEvent);
+        bool yResult = ProcessInputValueToAccelTimeGeneric(newInputValue.y, ref inputValue.y, ref accelTime.y, accelTimeRef, instantReset, false, boosterVPositiveEvent, boosterVNegativeEvent);
+
+        return xResult || yResult;
+    }
+
+    // Return true if the axis is pressed.
+    private bool ProcessInputValueToAccelTimeGeneric(float newInputValue, ref float previousFrameInputValue, ref float accelTime, float accelTimeRef, bool instantReset = true, bool forceReset = false, UnityEvent boosterPositiveEvent = null, UnityEvent boosterNegativeEvent = null)
+    {
+        float buffer = previousFrameInputValue;
+        previousFrameInputValue = newInputValue;
+
+        if (buffer == 0 && previousFrameInputValue != 0)
         {
-            if (Mathf.Sign(inputValue) > 0)
+            if (Mathf.Sign(previousFrameInputValue) > 0)
             {
                 boosterPositiveEvent?.Invoke();
             }
@@ -356,9 +421,9 @@ public class PlayerMovements : MonoBehaviour
         }
 
         if (forceReset
-            || Mathf.Approximately(inputValue, 0)
-            || buffer == 0 && inputValue != 0
-            || Mathf.Sign(buffer) != Mathf.Sign(inputValue))
+            || Mathf.Approximately(previousFrameInputValue, 0)
+            || buffer == 0 && previousFrameInputValue != 0
+            || Mathf.Sign(buffer) != Mathf.Sign(previousFrameInputValue))
         {
             if (instantReset)
             {
@@ -370,7 +435,7 @@ public class PlayerMovements : MonoBehaviour
             }
             return false;
         }
-        else if (inputValue != 0)
+        else if (previousFrameInputValue != 0)
         {
             accelTime = Mathf.Min(1, accelTime + Time.fixedDeltaTime / accelTimeRef);
             return true;
@@ -382,7 +447,7 @@ public class PlayerMovements : MonoBehaviour
     private bool m_suitFeatureActivationFlip = false;
     private void CountDown()
 	{
-        if (m_onLogReading)
+        if (m_onLogReading || m_disableAutoDash)
         {
             return;
         }
@@ -401,8 +466,7 @@ public class PlayerMovements : MonoBehaviour
 
         if(chrono <= 0f)
 		{
-            if (!m_disableAutoDash)
-                OnTimerEnd.Invoke();
+            OnTimerEnd.Invoke();
             
             m_suitFeatureActivationFlip = false;
             OnSuitWarningDisplay?.Invoke(false);
@@ -444,7 +508,7 @@ public class PlayerMovements : MonoBehaviour
         GUI.matrix = Matrix4x4.Scale(guiScale * Vector3.one);
 
         // Register the window. Notice the 3rd parameter
-        m_windowRect = GUILayout.Window(0, m_windowRect, RenderWindow, "Player Settings");
+        // m_windowRect = GUILayout.Window(0, m_windowRect, RenderWindow, "Player Settings");
         m_windowRect.height = Mathf.Min(m_windowRect.height, Screen.safeArea.height * 0.5f);
     }
 
@@ -460,7 +524,7 @@ public class PlayerMovements : MonoBehaviour
         if (m_showDebug)
         {
             GUILayout.BeginVertical();
-            GUI_DrawDebug();
+            // GUI_DrawDebug();
             GUILayout.EndVertical();
         }
         if (m_showSettings)
@@ -482,38 +546,38 @@ public class PlayerMovements : MonoBehaviour
     }
 
 
-    private void GUI_DrawDebug()
-    {
-        GUI.enabled = false;
-        GUILayout.BeginVertical();
-        GUILayout.Label("<b>Controls</b>");
-        GUILayout.Label("  Horizontal: A - D");
-        GUILayout.Label("  Vertical: W - S");
-        GUILayout.Label("  Roll: Q - E");
-        GUILayout.EndVertical();
+    //private void GUI_DrawDebug()
+    //{
+    //    GUI.enabled = false;
+    //    GUILayout.BeginVertical();
+    //    GUILayout.Label("<b>Controls</b>");
+    //    GUILayout.Label("  Horizontal: A - D");
+    //    GUILayout.Label("  Vertical: W - S");
+    //    GUILayout.Label("  Roll: Q - E");
+    //    GUILayout.EndVertical();
 
-        GUILayout.BeginVertical();
-        {
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Yaw:");
-            GUILayout.HorizontalSlider(m_horizontalAccelTime, 0, 1, GUILayout.Width(200));
-            GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Pitch:");
-            GUILayout.HorizontalSlider(m_verticalAccelTime, 0, 1, GUILayout.Width(200));
-            GUILayout.EndHorizontal();
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Roll:");
-            GUILayout.HorizontalSlider(m_rollAccelTime, 0, 1, GUILayout.Width(200));
-            GUILayout.EndHorizontal();
-        }
-        GUILayout.EndVertical();
+    //    GUILayout.BeginVertical();
+    //    {
+    //        GUILayout.BeginHorizontal();
+    //        GUILayout.Label("Yaw:");
+    //        GUILayout.HorizontalSlider(m_horizontalAccelTime, 0, 1, GUILayout.Width(200));
+    //        GUILayout.EndHorizontal();
+    //        GUILayout.BeginHorizontal();
+    //        GUILayout.Label("Pitch:");
+    //        GUILayout.HorizontalSlider(m_verticalAccelTime, 0, 1, GUILayout.Width(200));
+    //        GUILayout.EndHorizontal();
+    //        GUILayout.BeginHorizontal();
+    //        GUILayout.Label("Roll:");
+    //        GUILayout.HorizontalSlider(m_rollAccelTime, 0, 1, GUILayout.Width(200));
+    //        GUILayout.EndHorizontal();
+    //    }
+    //    GUILayout.EndVertical();
 
 
-        GUI_DrawField("Angular vel", rigidbodyRef.angularVelocity.ToString());
-        // GUI_DrawField("Angular vel", rigidbodyRef.angularVelocity.ToString());
-        GUI.enabled = true;
-    }
+    //    GUI_DrawField("Angular vel", rigidbodyRef.angularVelocity.ToString());
+    //    // GUI_DrawField("Angular vel", rigidbodyRef.angularVelocity.ToString());
+    //    GUI.enabled = true;
+    //}
 
     private void GUI_DrawSettings()
     {

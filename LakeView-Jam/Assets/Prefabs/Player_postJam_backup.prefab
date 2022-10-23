@@ -59,7 +59,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 70
+  field of view: 47
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -174,9 +174,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149400678064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.42, y: -0.6, z: -1.5}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0.72, y: -0.634, z: -0.55}
+  m_LocalScale: {x: 0.6410403, y: 0.6410403, z: 0.6410403}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5418715458162911736}
   - {fileID: 7650835204143946390}
@@ -1068,7 +1068,7 @@ GameObject:
   - component: {fileID: 750039203}
   - component: {fileID: 1154094778338577518}
   m_Layer: 2
-  m_Name: Player
+  m_Name: Player_postJam_backup
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
