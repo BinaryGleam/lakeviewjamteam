@@ -419,6 +419,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b0705561-63f1-4e6c-a98d-6a6c0247f403",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b0ce7d72-c0f1-42c0-b138-137faf17134a",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
@@ -432,17 +443,6 @@
                     "name": "",
                     "id": "fcd10b4c-3fcd-4bf9-a242-e5e54182fdcc",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Fire",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b0705561-63f1-4e6c-a98d-6a6c0247f403",
-                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -499,7 +499,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Confim",
+                    "name": "Confirm",
                     "type": "Button",
                     "id": "7944c206-0b30-49a4-93e3-f9d0615efa70",
                     "expectedControlType": "Button",
@@ -545,11 +545,22 @@
                 {
                     "name": "",
                     "id": "cf5015ed-98bf-41e2-919f-facd9853ebd6",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Confim",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0068da3f-5ed1-43e6-979b-b986b2d08f63",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -560,7 +571,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse&Keyboard",
-                    "action": "Confim",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -571,7 +582,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse&Keyboard",
-                    "action": "Confim",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

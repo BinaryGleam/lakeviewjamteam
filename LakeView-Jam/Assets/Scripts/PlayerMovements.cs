@@ -18,6 +18,9 @@ public class VectorEvent : UnityEvent<Vector3> { }
 
 public class PlayerMovements : MonoBehaviour
 {
+    private static readonly string ActionMapUIName = "UI";
+    private static readonly string ActionMapGameplayName = "Gameplay";
+
     public Action OnTimerEnd = null;
     
 
@@ -75,8 +78,6 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField]
     private AnimationCurve m_continuousRotationAccelCurve;
     [SerializeField]
-    private float m_stabilizerAccelTimeReference = 1f;
-    [SerializeField]
     private AnimationCurve m_stabilizerAccelCurve;
 
     //-------------- STABILIZER
@@ -85,11 +86,8 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField]
     private bool m_enableManualStabilizer = true;
     [SerializeField]
-    private bool m_canStabilizeAndRotateSimultaneously = false;
-    [SerializeField]
     [Range(0f, 5f)]
     private float m_stabilizerForce = 1f;
-    private float m_stabilizerInputValue = 0f;
     
 
     //-------------- STABILIZER
@@ -136,6 +134,8 @@ public class PlayerMovements : MonoBehaviour
     [NaughtyAttributes.Layer]
     private int m_terrainLayer;
 
+    private Vector3 m_invertMovementVector = Vector3.one;
+
     //-------------- DEBUG
     [Header("Debug")]
     [NaughtyAttributes.HorizontalLine(1)]
@@ -171,8 +171,8 @@ public class PlayerMovements : MonoBehaviour
 #endif
 
 
-    [SerializeField, NaughtyAttributes.InputAxis]
-    private string m_keyLogEscape;
+    private bool m_isGamePause;
+    public UnityEvent OnLogExit;
 
 
     [SerializeField, NaughtyAttributes.ReadOnly]
@@ -187,7 +187,25 @@ public class PlayerMovements : MonoBehaviour
     [NaughtyAttributes.ReadOnly, SerializeField]
     private float RollBoosterValue;
     
+    // Input
     private PlayerInput m_playerInput;
+    private InputAction m_pauseAction;
+    private InputAction m_uiConfirmAction;
+
+    public void InvertHorizontalRotation(bool invert)
+    {
+        m_invertMovementVector.y = invert ? -1 : 1;
+    }
+
+    public void InvertVerticalRotation(bool invert)
+    {
+        m_invertMovementVector.x = invert ? -1 : 1;
+    }
+
+    public void InvertRoll(bool invert)
+    {
+        m_invertMovementVector.z = invert ? -1 : 1;
+    }
 
     private void Awake()
 	{
@@ -217,6 +235,44 @@ public class PlayerMovements : MonoBehaviour
 #endif
     }
 
+    private void OnPause(bool pause)
+    {
+        if (pause)
+        {
+            m_playerInput.SwitchCurrentActionMap(ActionMapUIName);
+            m_isGamePause = true;
+            m_disableAutoDash = true;
+        }
+        else
+        {
+            m_playerInput.SwitchCurrentActionMap(ActionMapGameplayName);
+            m_isGamePause = false;
+            m_disableAutoDash = false;
+        }
+    }
+
+    private void OnEnable()
+    {
+        m_playerInput.SwitchCurrentActionMap(ActionMapUIName);
+        m_uiConfirmAction = m_playerInput.actions["Confirm"];
+        m_uiConfirmAction.started += LogConfirmButton;
+
+        GameManager.Instance.OnGamePause.AddListener(OnPause);
+
+        m_pauseAction = m_playerInput.actions["Pause"];
+        m_pauseAction.started += PauseAction_started;
+    }
+
+    private void OnDisable()
+    {
+        if (m_playerInput != null)
+        {
+            m_uiConfirmAction.canceled -= LogConfirmButton;
+        }
+        
+        GameManager.Instance.OnGamePause.RemoveListener(OnPause);
+    }
+
     void Update()
     {
         CatchInputs();
@@ -225,7 +281,7 @@ public class PlayerMovements : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (m_onLogReading)
+        if (m_onLogReading || m_isGamePause)
         {
             return;
         }
@@ -247,9 +303,9 @@ public class PlayerMovements : MonoBehaviour
         OnYawBoosterChanged?.Invoke(YawBoosterValue);
         OnRollBoosterChanged?.Invoke(RollBoosterValue);
 
-        Vector3 torqueSpeed = new Vector3(PitchBoosterValue * Mathf.Sign(m_rotationInputValue.y), 
-            YawBoosterValue * Mathf.Sign(m_rotationInputValue.x), 
-            RollBoosterValue * Mathf.Sign(m_rollInputValue));
+        Vector3 torqueSpeed = new Vector3(PitchBoosterValue * Mathf.Sign(m_rotationInputValue.y) * m_invertMovementVector.x, 
+            YawBoosterValue * Mathf.Sign(m_rotationInputValue.x) * m_invertMovementVector.y, 
+            RollBoosterValue * Mathf.Sign(m_rollInputValue) * m_invertMovementVector.z);
 
         torqueSpeed.Scale(m_rotationSpeed);
 
@@ -265,7 +321,12 @@ public class PlayerMovements : MonoBehaviour
         PushAwayFromGround(Time.fixedDeltaTime);
     }
 
-   
+    private void PauseAction_started(InputAction.CallbackContext obj)
+    {
+        GameManager.Instance.Pause(true);
+        Debug.Log("Pause");
+    }
+
     // Added this to prevent player to feel like it is just a ball
     private void PushAwayFromGround(float deltaTime)
     {
@@ -319,34 +380,32 @@ public class PlayerMovements : MonoBehaviour
         m_onLogReading = true;
     }
 
-    public UnityEvent OnLogExit;
-	
+    private void LogConfirmButton(InputAction.CallbackContext context)
+    {
+        if (m_onLogReading)
+        {
+            OnLogExit?.Invoke();
+            m_disableAutoDash = false;
+            m_onLogReading = false;
+            m_playerInput.SwitchCurrentActionMap(ActionMapGameplayName);
+        }
+        else if (m_isGamePause)
+        {
+            GameManager.Instance.Pause(false);
+        }
+    }
+    
     private void CatchInputs()
 	{
         if (!m_onLogReading)
         {      
-            // We disabled this feature
-            // bool blockRotation = ProcessInputValueToAccelTime("Fire2", ref m_stabilizerInputValue, ref m_stabilizerAccelTime, m_stabilizerAccelTimeReference, false) && !m_canStabilizeAndRotateSimultaneously;
-
-            // OLD
-            // ProcessInputValueToAccelTime("Horizontal", ref m_horizontalInputValue, ref m_horizontalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation, 
-            //     boosterPositiveEvent: OnLeftBoosterTrigger, boosterNegativeEvent: OnRightBoosterTrigger);
-            // 
-            // ProcessInputValueToAccelTime("Vertical", ref m_verticalInputValue, ref m_verticalAccelTime, m_rotationAccelTimeReference, forceReset: blockRotation,
-            //     boosterPositiveEvent: OnDownBoosterTrigger, boosterNegativeEvent: OnUpBoosterTrigger);
-
             ProcessInputValueToAccelTime("Rotate", ref m_rotationInputValue, ref m_rotationAccelTime, m_rotationAccelTimeReference,
                 OnDownBoosterTrigger, OnUpBoosterTrigger, OnLeftBoosterTrigger, OnRightBoosterTrigger);
 
             ProcessInputValueToAccelTime("Roll", ref m_rollInputValue, ref m_rollAccelTime, m_rotationAccelTimeReference,
                 boosterPositiveEvent: OnRollDownLeftBoosterTrigger, boosterNegativeEvent: OnRollUpRightBoosterTrigger);
         }
-        else if (Input.GetAxis(m_keyLogEscape) != 0)
-        {
-            OnLogExit?.Invoke();
-            m_disableAutoDash = false;
-            m_onLogReading = false;
-        }
+        
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(m_debugDashKey))

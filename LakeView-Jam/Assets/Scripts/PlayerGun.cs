@@ -49,6 +49,10 @@ public class PlayerGun : MonoBehaviour
 
     public UnityEvent OnShot;
 
+    private PlayerInput m_playerInput;
+
+    private InputAction m_fireAction;
+
     void Awake()
     {
         if (lineRendererRef == null)
@@ -64,6 +68,29 @@ public class PlayerGun : MonoBehaviour
         }
 
         //Cursor.visible = false;
+    }
+
+    private void OnEnable()
+    {
+        if (!m_playerInput)
+        {
+            m_playerInput = GetComponent<PlayerInput>();
+            m_fireAction = m_playerInput.actions["Fire"];
+        }
+
+        m_playerInput.onControlsChanged += OnControlsChanged;
+        m_fireAction.started += Shoot;
+        m_fireAction.canceled += Shoot;
+    }
+
+    private void OnDisable()
+    {
+        if (m_playerInput != null)
+        {
+            m_fireAction.started -= Shoot;
+            m_fireAction.canceled -= Shoot;
+            m_playerInput.onControlsChanged -= OnControlsChanged;
+        }
     }
 
     public void Shoot(InputAction.CallbackContext context)
@@ -165,7 +192,6 @@ public class PlayerGun : MonoBehaviour
         beef.z = 0;
         m_playerArm.localRotation = Quaternion.Euler(beef);
     }
-
 
     [SerializeField]
     private float m_sphereCastRadius = 1;
