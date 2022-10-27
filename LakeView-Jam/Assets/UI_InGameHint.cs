@@ -55,7 +55,7 @@ public class UI_InGameHint : MonoBehaviour
     private bool m_showInputAlternatives = false;
     [SerializeField]
     private bool m_generateFullHelpText = true;
-
+    
     string GenerateHelpText(InputAction action)
     {
         if (action.controls.Count == 0)
@@ -92,6 +92,6 @@ public class UI_InGameHint : MonoBehaviour
                 break;
             }    
         }
-        return m_generateFullHelpText ? $"{verb} {controls} to {action.name.ToLower()}" : $"{controls}";
+        return m_generateFullHelpText ? $"{verb} <i>{controls}</i> to {action.name.ToLower()}" : $"{controls}";
     }
 }
