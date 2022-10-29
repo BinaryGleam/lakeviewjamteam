@@ -2,6 +2,7 @@
 the repo for the people of lakeview doing a jam
 
 ![TitleScreen](TitleScreen.PNG)
+[Itch.io link](https://binarygleam.itch.io/fatal-desolation)
 
 ## TO DO
 
