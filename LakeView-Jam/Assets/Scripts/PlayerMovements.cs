@@ -257,10 +257,20 @@ public class PlayerMovements : MonoBehaviour
         m_uiConfirmAction = m_playerInput.actions["Confirm"];
         m_uiConfirmAction.started += LogConfirmButton;
 
-        GameManager.Instance.OnGamePause.AddListener(OnPause);
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.OnGamePause.AddListener(OnPause);
+        }
 
         m_pauseAction = m_playerInput.actions["Pause"];
         m_pauseAction.started += PauseAction_started;
+
+        if (PlayerSetting.Instance)
+        {
+            PlayerSetting.Instance.OnInvertRotationXChanged.AddListener(InvertHorizontalRotation);
+            PlayerSetting.Instance.OnInvertRotationYChanged.AddListener(InvertVerticalRotation);
+            PlayerSetting.Instance.OnInvertRollChanged.AddListener(InvertRoll);
+        }
     }
 
     private void OnDisable()
@@ -268,9 +278,20 @@ public class PlayerMovements : MonoBehaviour
         if (m_playerInput != null)
         {
             m_uiConfirmAction.canceled -= LogConfirmButton;
+            m_pauseAction.started -= PauseAction_started;
         }
-        
-        GameManager.Instance.OnGamePause.RemoveListener(OnPause);
+
+        if (GameManager.Instance)
+        {
+            GameManager.Instance.OnGamePause.RemoveListener(OnPause);
+        }
+
+        if (PlayerSetting.Instance)
+        {
+            PlayerSetting.Instance.OnInvertRotationXChanged.RemoveListener(InvertHorizontalRotation);
+            PlayerSetting.Instance.OnInvertRotationYChanged.RemoveListener(InvertVerticalRotation);
+            PlayerSetting.Instance.OnInvertRollChanged.RemoveListener(InvertRoll);
+        }
     }
 
     void Update()
@@ -323,8 +344,12 @@ public class PlayerMovements : MonoBehaviour
 
     private void PauseAction_started(InputAction.CallbackContext obj)
     {
+        if (GetComponent<DeathSystem>().IsDead)
+        {
+            return;
+        }
+
         GameManager.Instance.Pause(true);
-        Debug.Log("Pause");
     }
 
     // Added this to prevent player to feel like it is just a ball

@@ -22,6 +22,7 @@ public class ScreenFader_ColorAdjustmentEffect : MonoBehaviour
 
         public AnimationCurve TargetPostExposure;
         public AnimationCurve TargetContrast;
+        public AnimationCurve TargetVolumeCurve;
         public float TargetVolumeFadeInDb;
         public float TargetPitchFade;
         public bool DisableEffectAtTheEnd;
@@ -66,7 +67,7 @@ public class ScreenFader_ColorAdjustmentEffect : MonoBehaviour
             {
                 m_colorAdjustments.contrast.value = fader.TargetContrast.Evaluate(m_currentTime);
                 m_colorAdjustments.postExposure.value = fader.TargetPostExposure.Evaluate(m_currentTime);
-                m_masterMixer.SetFloat("MasterVolume", Mathf.Lerp(initialVolume, fader.TargetVolumeFadeInDb, m_currentTime));
+                m_masterMixer.SetFloat("MasterVolume", fader.TargetVolumeCurve.Evaluate(m_currentTime) + initialVolume);// * Mathf.Lerp(initialVolume, fader.TargetVolumeFadeInDb, m_currentTime));;
                 m_masterMixer.SetFloat("MasterPitch", Mathf.Lerp(initialPitch, fader.TargetPitchFade, m_currentTime));
 
                 yield return new WaitForFixedUpdate();

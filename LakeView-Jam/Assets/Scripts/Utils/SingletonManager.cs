@@ -9,12 +9,13 @@ public abstract class SingletonManager<T> : MonoBehaviour
     protected virtual void Constructor() { }
     protected abstract T GetInstance();
 
+    public bool destroyGameObjectIfAlreadyExist = true;
     private void Awake()
     {
         if(m_instance != null)
         {
-            Debug.LogError($"Singleton Manager of type <{this.GetType().Name}> already exist. Destroying {this}...");
-            Destroy(this);
+            Debug.LogWarning($"Singleton Manager of type <{this.GetType().Name}> already exist. Destroying {this}...");
+            Destroy(destroyGameObjectIfAlreadyExist ? gameObject : this);
         }
 
         m_instance = GetInstance();

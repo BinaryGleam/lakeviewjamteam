@@ -226,8 +226,8 @@ public class PlayerGun : MonoBehaviour
         {
 #if UNITY_EDITOR
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hitInfos.distance, Color.yellow);
-#endif
             m_lastHit = hitInfos.point;
+#endif
             lineRendererRef.SetPosition(1, hitInfos.point);
 
             if (m_laserImpactFX)
@@ -254,7 +254,9 @@ public class PlayerGun : MonoBehaviour
                     Instantiate(m_laserImpactFX, hitInfos.point + hitInfos.normal, Quaternion.identity);
                 }
 
+#if UNITY_EDITOR
                 m_lastHit = hitInfos.point;
+#endif
                 lineRendererRef.SetPosition(1, hitInfos.point);
             }
             else

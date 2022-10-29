@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class UI_InGameHint : MonoBehaviour
@@ -15,6 +16,9 @@ public class UI_InGameHint : MonoBehaviour
 
     private PlayerInput m_playerInput;
     private TextMeshProUGUI m_text;
+
+    public UnityEvent OnFirstInputActionPressed;
+    private InputAction m_firstAction;
     //private bool m_lastDeviceUsedIsGamepad = false;
 
     // Start is called before the first frame update
@@ -27,7 +31,18 @@ public class UI_InGameHint : MonoBehaviour
     private void OnEnable()
     {
         m_playerInput.onControlsChanged += UpdateUIHints;
+        m_firstAction = m_playerInput.actions[m_inputActionNameArray[0]];
+        
+        if (m_firstAction != null)
+        {
+            m_firstAction.started += OnFirstAction_Started;
+        }
         UpdateUIHints(m_playerInput);
+    }
+
+    private void OnFirstAction_Started(InputAction.CallbackContext context)
+    {
+        OnFirstInputActionPressed?.Invoke();
     }
 
     private void OnDisable()
@@ -35,6 +50,10 @@ public class UI_InGameHint : MonoBehaviour
         if (m_playerInput != null)
         {
             m_playerInput.onControlsChanged -= UpdateUIHints;
+            if (m_firstAction != null)
+            {
+                m_firstAction.started -= OnFirstAction_Started;
+            }
         }
     }
 

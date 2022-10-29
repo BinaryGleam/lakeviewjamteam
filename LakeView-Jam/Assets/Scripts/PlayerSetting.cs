@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSetting : MonoBehaviour
+public class PlayerSetting : SingletonManager<PlayerSetting>
 {
+    protected override PlayerSetting GetInstance()
+    {
+        return this;
+    }
+
     [SerializeField]
     private bool m_invertRotationX = false;
     [SerializeField]

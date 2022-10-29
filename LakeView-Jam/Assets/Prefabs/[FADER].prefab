@@ -47,7 +47,7 @@ MonoBehaviour:
   m_volume: {fileID: 0}
   m_masterMixer: {fileID: 24100000, guid: 81f10908e8fb70b43834c0aa211d37e8, type: 2}
   m_fadeInDefinition:
-    Duration: 2
+    Duration: 4
     TargetPostExposure:
       serializedVersion: 2
       m_Curve:
@@ -92,6 +92,39 @@ MonoBehaviour:
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    TargetVolumeCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0.000009006924
+        outSlope: 0
+        tangentMode: 69
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.3375
+      - serializedVersion: 3
+        time: 0.5
+        value: 0
+        inSlope: -0
+        outSlope: -4.2544055
+        tangentMode: 5
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.92691576
+      - serializedVersion: 3
+        time: 1
+        value: -80.9975
+        inSlope: -342.66537
+        outSlope: -342.66537
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.15135777
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -152,6 +185,30 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    TargetVolumeCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 80
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
     TargetVolumeFadeInDb: 0
     TargetPitchFade: 1
     DisableEffectAtTheEnd: 1
@@ -205,6 +262,12 @@ MonoBehaviour:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    TargetVolumeCurve:
+      serializedVersion: 2
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

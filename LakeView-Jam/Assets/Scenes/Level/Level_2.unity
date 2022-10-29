@@ -2673,6 +2673,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -3062,7 +3067,7 @@ GameObject:
   - component: {fileID: 134305011}
   - component: {fileID: 134305013}
   - component: {fileID: 134305012}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: StatusLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3774,7 +3779,7 @@ GameObject:
   - component: {fileID: 164984494}
   - component: {fileID: 164984496}
   - component: {fileID: 164984495}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sparks (Loop)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9468,7 +9473,7 @@ GameObject:
   - component: {fileID: 247133767}
   - component: {fileID: 247133769}
   - component: {fileID: 247133768}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fusebox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9911,7 +9916,7 @@ GameObject:
   - component: {fileID: 268042709}
   - component: {fileID: 268042711}
   - component: {fileID: 268042710}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FuseboxBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11178,7 +11183,7 @@ GameObject:
   - component: {fileID: 283912045}
   - component: {fileID: 283912047}
   - component: {fileID: 283912046}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sparks (Loop)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17206,7 +17211,7 @@ GameObject:
   - component: {fileID: 352107282}
   - component: {fileID: 352107284}
   - component: {fileID: 352107283}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FuseboxBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17940,6 +17945,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -18456,7 +18466,7 @@ GameObject:
   - component: {fileID: 415278554}
   - component: {fileID: 415278553}
   - component: {fileID: 415278552}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorButton (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18503,6 +18513,7 @@ MonoBehaviour:
   OnDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  isImmortal: 0
 --- !u!114 &415278553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18997,7 +19008,7 @@ GameObject:
   - component: {fileID: 441050341}
   - component: {fileID: 441050340}
   - component: {fileID: 441050339}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorButton (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19044,6 +19055,7 @@ MonoBehaviour:
   OnDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  isImmortal: 0
 --- !u!114 &441050340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19955,6 +19967,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -20096,7 +20113,7 @@ GameObject:
   - component: {fileID: 501590641}
   - component: {fileID: 501590640}
   - component: {fileID: 501590639}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorButton (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20143,6 +20160,7 @@ MonoBehaviour:
   OnDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  isImmortal: 0
 --- !u!114 &501590640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20337,7 +20355,7 @@ GameObject:
   - component: {fileID: 530434514}
   - component: {fileID: 530434516}
   - component: {fileID: 530434515}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: StatusLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20748,7 +20766,7 @@ GameObject:
   - component: {fileID: 542131589}
   - component: {fileID: 542131591}
   - component: {fileID: 542131590}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fusebox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21349,6 +21367,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -21791,7 +21814,7 @@ GameObject:
   - component: {fileID: 617529908}
   - component: {fileID: 617529910}
   - component: {fileID: 617529909}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fusebox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22724,7 +22747,7 @@ GameObject:
   - component: {fileID: 665147246}
   - component: {fileID: 665147248}
   - component: {fileID: 665147247}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: StatusLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23510,6 +23533,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -23934,6 +23962,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spot Light (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1048782740144599521, guid: 16ccbf53090a0af4eaa6ed333c977fbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1048782740144599523, guid: 16ccbf53090a0af4eaa6ed333c977fbe,
         type: 3}
       propertyPath: m_Range
@@ -24239,6 +24272,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Astronaut (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -25392,7 +25430,7 @@ GameObject:
   - component: {fileID: 781528314}
   - component: {fileID: 781528316}
   - component: {fileID: 781528315}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FuseboxBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26444,6 +26482,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -26659,7 +26702,7 @@ GameObject:
   - component: {fileID: 857483776}
   - component: {fileID: 857483778}
   - component: {fileID: 857483777}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: StatusLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27289,6 +27332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -27495,6 +27543,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -27571,6 +27624,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Astronaut (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -27945,6 +28003,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -28021,6 +28084,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Astronaut (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -28818,6 +28886,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -28989,6 +29062,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Astronaut (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -29162,7 +29240,7 @@ GameObject:
   - component: {fileID: 960314730}
   - component: {fileID: 960314732}
   - component: {fileID: 960314731}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FuseboxBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29365,7 +29443,7 @@ GameObject:
   - component: {fileID: 973261862}
   - component: {fileID: 973261864}
   - component: {fileID: 973261863}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FuseboxBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29813,7 +29891,7 @@ GameObject:
   - component: {fileID: 997409477}
   - component: {fileID: 997409479}
   - component: {fileID: 997409478}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FuseboxBroken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30745,6 +30823,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Astronaut (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -31788,6 +31871,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9175723660790064278, guid: 83279aba674136541acfb80102cf4149,
         type: 3}
       propertyPath: OnDeathEvent.m_PersistentCalls.m_Calls.Array.size
@@ -32167,7 +32255,7 @@ GameObject:
   - component: {fileID: 1122876707}
   - component: {fileID: 1122876706}
   - component: {fileID: 1122876705}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorButton (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32214,6 +32302,7 @@ MonoBehaviour:
   OnDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  isImmortal: 0
 --- !u!114 &1122876706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32840,7 +32929,7 @@ GameObject:
   - component: {fileID: 1187778441}
   - component: {fileID: 1187778443}
   - component: {fileID: 1187778442}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sparks (Loop)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37967,7 +38056,7 @@ GameObject:
   - component: {fileID: 1197767919}
   - component: {fileID: 1197767921}
   - component: {fileID: 1197767920}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fusebox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38867,6 +38956,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -38943,6 +39037,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Astronaut (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -39859,7 +39958,7 @@ GameObject:
   - component: {fileID: 1360115986}
   - component: {fileID: 1360115988}
   - component: {fileID: 1360115987}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: StatusLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42146,7 +42245,7 @@ GameObject:
   - component: {fileID: 1573200625}
   - component: {fileID: 1573200627}
   - component: {fileID: 1573200626}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: StatusLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43337,7 +43436,7 @@ GameObject:
   - component: {fileID: 1636937893}
   - component: {fileID: 1636937895}
   - component: {fileID: 1636937894}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sparks (Loop)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48545,7 +48644,7 @@ GameObject:
   - component: {fileID: 1662688385}
   - component: {fileID: 1662688387}
   - component: {fileID: 1662688386}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fusebox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48663,7 +48762,7 @@ GameObject:
   - component: {fileID: 1672863464}
   - component: {fileID: 1672863463}
   - component: {fileID: 1672863462}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorButton (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48710,6 +48809,7 @@ MonoBehaviour:
   OnDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  isImmortal: 0
 --- !u!114 &1672863463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49225,6 +49325,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Astronaut (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -50375,6 +50480,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -50482,6 +50592,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Astronaut (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -50806,6 +50921,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2332937043287923638, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332937043287923638, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332937043287923638, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.103881836
       objectReference: {fileID: 0}
@@ -50814,6 +50939,86 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 1571.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2667043267367318455, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667043267367318455, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667043267367318455, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2667043267367318455, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810600138857678391, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810600138857678391, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810600138857678391, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3810600138857678391, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071611446034926207, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071611446034926207, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071611446034926207, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071611446034926207, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250644381420095114, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250644381420095114, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250644381420095114, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250644381420095114, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7971867824323381736, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -50821,8 +51026,93 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
+      propertyPath: m_finalfadeInDefinition.Duration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
       propertyPath: m_fadeOutDefinition.OnFadeEnd.m_PersistentCalls.m_Calls.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[1].time
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[2].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[2].value
+      value: -80.9975
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[0].inSlope
+      value: 0.000009006924
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[2].inSlope
+      value: -342.66537
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[1].outSlope
+      value: -4.2544055
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[2].inWeight
+      value: 0.15135777
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[2].outSlope
+      value: -342.66537
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[0].outWeight
+      value: 0.3375
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[1].outWeight
+      value: 0.92691576
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[2].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[0].tangentMode
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
+        type: 3}
+      propertyPath: m_finalfadeInDefinition.TargetVolumeCurve.m_Curve.Array.data[1].tangentMode
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7971867824323381739, guid: 17b3e1fb26cb5844694fa82b7ae16b45,
         type: 3}
@@ -51517,7 +51807,7 @@ GameObject:
   - component: {fileID: 1818678941}
   - component: {fileID: 1818678943}
   - component: {fileID: 1818678942}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sparks (Loop)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56567,6 +56857,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -56816,7 +57111,7 @@ GameObject:
   - component: {fileID: 1850268929}
   - component: {fileID: 1850268931}
   - component: {fileID: 1850268930}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Fusebox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56957,6 +57252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Astronaut (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -58429,6 +58729,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 6398096320143415693, guid: 83279aba674136541acfb80102cf4149,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 83279aba674136541acfb80102cf4149, type: 3}
@@ -58577,7 +58882,7 @@ GameObject:
   - component: {fileID: 1942990474}
   - component: {fileID: 1942990476}
   - component: {fileID: 1942990475}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sparks (Loop)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65807,7 +66112,7 @@ GameObject:
   - component: {fileID: 2128379908}
   - component: {fileID: 2128379907}
   - component: {fileID: 2128379906}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: DoorButton (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65854,6 +66159,7 @@ MonoBehaviour:
   OnDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  isImmortal: 0
 --- !u!114 &2128379907
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/DevScenes/GraphicsTest.unity
     guid: 9c039aa3e0f7b0843ada5579fb28e325
   - enabled: 1
+    path: Assets/Scenes/Level/Boot.unity
+    guid: f4573cb20b79ca744b49fbfe0f1e3d23
+  - enabled: 1
     path: Assets/Scenes/Level/Level_0.unity
     guid: 709a7ed569d28824fb8296b9590fddbc
   - enabled: 1
